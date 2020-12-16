@@ -24,3 +24,7 @@
 * [x] [UG103.6: Bootloader Fundamentals (Rev. 1.6)](./docs/UG103.6%20Bootloader%20Fundamentals.md)
 * [x] [UG266: Silicon Labs Gecko Bootloader User's Guide (Rev. 1.5)](docs/UG266%20Silicon%20Labs%20Gecko%20Bootloader%20User's%20Guide.md)
 * [x] [AN1086: Using the Gecko Bootloader with the Silicon Labs Bluetooth® Applications (Rev. 1.3)](docs/AN1086%20Using%20the%20Gecko%20Bootloader%20with%20the%20Silicon%20Labs%20Bluetooth%20Applications.md)
+
+## 非易失性数据存储
+
+* [x] [UG103.7: Non-Volatile Data Storage Fundamentals (Rev. 1.6)](docs/UG103.7%20Non-Volatile%20Data%20Storage%20Fundamentals.md)
