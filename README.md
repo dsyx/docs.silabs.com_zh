@@ -4,4 +4,10 @@
 
 # Silicon Labs Bluetooth
 
+## 快速开发指南
+
 * [x] [QSG169: Bluetooth® SDK v3.x Quick-Start Guide (Rev. 0.3)](docs/QSG169%20Bluetooth%20SDK%20v3.x%20Quick-Start%20Guide.md)
+
+## 基础原理
+
+* [x] [UG103.14: Bluetooth® LE Fundamentals (Rev. 0.6)](docs/UG103.14%20Bluetooth%20LE%20Fundamentals.md)
