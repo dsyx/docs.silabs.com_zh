@@ -15,3 +15,4 @@
 ## 参考
 
 * [x] [UG434: Silicon Labs Bluetooth® C Application Developer's Guide for SDK v3.x (Rev. 0.3)](docs/UG434%20Silicon%20Labs%20Bluetooth%20C%20Application%20Developer's%20Guide%20for%20SDK%20v3.x.md)
+* [x] [UG438: GATT Configurator User's Guide for Bluetooth® SDK v3.x (Rev. 0.1)](./docs/UG438%20GATT%20Configurator%20User's%20Guide%20for%20Bluetooth%20SDK%20v3.x.md)
