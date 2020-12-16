@@ -11,3 +11,7 @@
 ## 基础原理
 
 * [x] [UG103.14: Bluetooth® LE Fundamentals (Rev. 0.6)](docs/UG103.14%20Bluetooth%20LE%20Fundamentals.md)
+
+## 参考
+
+* [x] [UG434: Silicon Labs Bluetooth® C Application Developer's Guide for SDK v3.x (Rev. 0.3)](docs/UG434%20Silicon%20Labs%20Bluetooth%20C%20Application%20Developer's%20Guide%20for%20SDK%20v3.x.md)
