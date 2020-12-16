@@ -34,3 +34,4 @@
 
 * [x] [UG103.16: Multiprotocol Fundamentals (Rev. 0.3)](docs/UG103.16%20Multiprotocol%20Fundamentals.md)
 * [x] [UG305: Dynamic Multiprotocol User's Guide (Rev. 0.9)](docs/UG305%20Dynamic%20Multiprotocol%20User's%20Guide.md)
+* [x] [AN1269: Dynamic Multiprotocol Development with Bluetooth® and Proprietary Protocols on RAIL in GSDK v3.x (Rev. 0.1)](docs/AN1269%20Dynamic%20Multiprotocol%20Development%20with%20Bluetooth%20and%20Proprietary%20Protocols%20on%20RAIL%20in%20GSDK%20v3.x.md)
