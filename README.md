@@ -33,3 +33,4 @@
 ## 多协议
 
 * [x] [UG103.16: Multiprotocol Fundamentals (Rev. 0.3)](docs/UG103.16%20Multiprotocol%20Fundamentals.md)
+* [x] [UG305: Dynamic Multiprotocol User's Guide (Rev. 0.9)](docs/UG305%20Dynamic%20Multiprotocol%20User's%20Guide.md)
