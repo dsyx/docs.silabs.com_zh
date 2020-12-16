@@ -22,3 +22,4 @@
 ## 引导加载
 
 * [x] [UG103.6: Bootloader Fundamentals (Rev. 1.6)](./docs/UG103.6%20Bootloader%20Fundamentals.md)
+* [x] [UG266: Silicon Labs Gecko Bootloader User's Guide (Rev. 1.5)](docs/UG266%20Silicon%20Labs%20Gecko%20Bootloader%20User's%20Guide.md)
