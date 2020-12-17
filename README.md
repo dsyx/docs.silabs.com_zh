@@ -39,3 +39,9 @@
 ## 测试
 
 * [x] [AN1267: Radio Frequency Physical Layer Evaluation in Bluetooth® SDK v3.x (Rev. 0.1)](docs/AN1267%20Radio%20Frequency%20Physical%20Layer%20Evaluation%20in%20Bluetooth%20SDK%20v3.x.md)
+
+# Silicon Labs Flex
+
+## 快速开发指南
+
+* [x] [QSG168: Proprietary Flex SDK v3.x Quick-Start Guide (Rev. 0.1)](docs/QSG168%20Proprietary%20Flex%20SDK%20v3.x%20Quick-Start%20Guide.md)
