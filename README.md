@@ -45,3 +45,7 @@
 ## 快速开发指南
 
 * [x] [QSG168: Proprietary Flex SDK v3.x Quick-Start Guide (Rev. 0.1)](docs/QSG168%20Proprietary%20Flex%20SDK%20v3.x%20Quick-Start%20Guide.md)
+
+## 应用开发基础
+
+* [x] [UG103.12: Silicon Labs Connect Fundamentals (Rev. 0.7)](docs/UG103.12%20Silicon%20Labs%20Connect%20Fundamentals.md)
