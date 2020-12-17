@@ -51,3 +51,10 @@
 * [x] [UG103.12: Silicon Labs Connect Fundamentals (Rev. 0.7)](docs/UG103.12%20Silicon%20Labs%20Connect%20Fundamentals.md)
 * [x] [UG103.13: RAIL Fundamentals (Rev. 1.0)](docs/UG103.13%20RAIL%20Fundamentals.md)
 * [x] [UG103.1: Wireless Networking Application Development Fundamentals (Rev. 1.3)](docs/UG103.1%20Wireless%20Networking%20Application%20Development%20Fundamentals.md)
+* [x] [UG103.6: Bootloader Fundamentals (Rev. 1.6)](./docs/UG103.6%20Bootloader%20Fundamentals.md)
+* [x] [UG103.7: Non-Volatile Data Storage Fundamentals (Rev. 1.6)](docs/UG103.7%20Non-Volatile%20Data%20Storage%20Fundamentals.md)
+* [x] [UG103.16: Multiprotocol Fundamentals (Rev. 0.3)](docs/UG103.16%20Multiprotocol%20Fundamentals.md)
+
+## 有关 Connect 的更多信息
+
+* [x] [UG435.01: About the Connect v3.x User's Guide (Rev. 0.1)](docs/UG435.01%20About%20the%20Connect%20v3.x%20User's%20Guide.md)
