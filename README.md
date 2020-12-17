@@ -62,3 +62,4 @@
 * [x] [UG435.03: Architecture of the Silicon Labs Connect Stack v3.x (Rev. 0.1)](docs/UG435.03%20Architecture%20of%20the%20Silicon%20Labs%20Connect%20Stack%20v3.x.md)
 * [x] [UG435.04: Customizing Applications with Silicon Labs Connect v3.x (Rev. 0.2)](docs/UG435.04%20Customizing%20Applications%20with%20Silicon%20Labs%20Connect%20v3.x.md)
 * [x] [UG435.05: Using Micrium OS (RTOS) with Silicon Labs Connect v3.x (Rev. 0.1)](docs/UG435.05%20Using%20Micrium%20OS%20(RTOS)%20with%20Silicon%20Labs%20Connect%20v3.x.md)
+* [x] [UG435.06: Bootloading and OTA with Silicon Labs Connect v3.x (Rev. 0.1)](docs/UG435.06%20Bootloading%20and%20OTA%20with%20Silicon%20Labs%20Connect%20v3.x.md)
