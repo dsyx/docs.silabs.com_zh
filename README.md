@@ -68,3 +68,5 @@
 * [x] [AN1085: Using the Gecko Bootloader with Silicon Labs Connect (Rev. 0.4)](docs/AN1085%20Using%20the%20Gecko%20Bootloader%20with%20Silicon%20Labs%20Connect.md)
 * [x] [UG305: Dynamic Multiprotocol User's Guide (Rev. 0.9)](docs/UG305%20Dynamic%20Multiprotocol%20User's%20Guide.md)
 * [x] [AN1252: Building Low Power Networks with the Silicon Labs Connect Stack v3.x (Rev. 0.2)](docs/AN1252%20Building%20Low%20Power%20Networks%20with%20the%20Silicon%20Labs%20Connect%20Stack%20v3.x.md)
+* [x] [AN1135: Using Third Generation Non-Volatile Memory (NVM3) Data Storage (Rev. 1.0)](docs/AN1135%20Using%20Third%20Generation%20Non-Volatile%20Memory%20(NVM3)%20Data%20Storage.md)
+* [x] [AN1154: Using Tokens for Non-Volatile Data Storage (Rev. 0.9)](docs/AN1154%20Using%20Tokens%20for%20Non-Volatile%20Data%20Storage.md)
