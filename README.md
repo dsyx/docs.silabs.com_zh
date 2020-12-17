@@ -50,3 +50,4 @@
 
 * [x] [UG103.12: Silicon Labs Connect Fundamentals (Rev. 0.7)](docs/UG103.12%20Silicon%20Labs%20Connect%20Fundamentals.md)
 * [x] [UG103.13: RAIL Fundamentals (Rev. 1.0)](docs/UG103.13%20RAIL%20Fundamentals.md)
+* [x] [UG103.1: Wireless Networking Application Development Fundamentals (Rev. 1.3)](docs/UG103.1%20Wireless%20Networking%20Application%20Development%20Fundamentals.md)
