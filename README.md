@@ -58,3 +58,4 @@
 ## 有关 Connect 的更多信息
 
 * [x] [UG435.01: About the Connect v3.x User's Guide (Rev. 0.1)](docs/UG435.01%20About%20the%20Connect%20v3.x%20User's%20Guide.md)
+* [x] [UG435.02: Using Silicon Labs Connect v3.x with IEEE 802.15.4 (Rev. 0.1)](docs/UG435.02%20Using%20Silicon%20Labs%20Connect%20v3.x%20with%20IEEE%20802.15.4.md)
