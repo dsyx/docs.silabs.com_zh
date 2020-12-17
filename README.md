@@ -61,3 +61,4 @@
 * [x] [UG435.02: Using Silicon Labs Connect v3.x with IEEE 802.15.4 (Rev. 0.1)](docs/UG435.02%20Using%20Silicon%20Labs%20Connect%20v3.x%20with%20IEEE%20802.15.4.md)
 * [x] [UG435.03: Architecture of the Silicon Labs Connect Stack v3.x (Rev. 0.1)](docs/UG435.03%20Architecture%20of%20the%20Silicon%20Labs%20Connect%20Stack%20v3.x.md)
 * [x] [UG435.04: Customizing Applications with Silicon Labs Connect v3.x (Rev. 0.2)](docs/UG435.04%20Customizing%20Applications%20with%20Silicon%20Labs%20Connect%20v3.x.md)
+* [x] [UG435.05: Using Micrium OS (RTOS) with Silicon Labs Connect v3.x (Rev. 0.1)](docs/UG435.05%20Using%20Micrium%20OS%20(RTOS)%20with%20Silicon%20Labs%20Connect%20v3.x.md)
