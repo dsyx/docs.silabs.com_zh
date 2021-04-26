@@ -82,3 +82,4 @@
 
 * [x] [UG103.1: Wireless Networking Application Development Fundamentals (Rev. 1.3)](docs/UG103.1%20Wireless%20Networking%20Application%20Development%20Fundamentals.md)
 * [x] [UG103.3: Software Design Fundamentals (Rev. 2.3)](docs/UG103.3%20Software%20Design%20Fundamentals.md)
+* [x] [UG103.4: HAL Fundamentals (Rev. 1.3)](docs/UG103.4%20HAL%20Fundamentals.md)
