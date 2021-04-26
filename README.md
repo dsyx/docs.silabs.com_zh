@@ -84,3 +84,5 @@
 * [x] [UG103.3: Software Design Fundamentals (Rev. 2.3)](docs/UG103.3%20Software%20Design%20Fundamentals.md)
 * [x] [UG103.4: HAL Fundamentals (Rev. 1.3)](docs/UG103.4%20HAL%20Fundamentals.md)
 * [x] [UG103.5: IoT Endpoint Security Fundamentals (Rev. 1.2)](docs/UG103.5%20IoT%20Endpoint%20Security%20Fundamentals.md)
+* [x] [UG103.6: Bootloader Fundamentals (Rev. 1.6)](./docs/UG103.6%20Bootloader%20Fundamentals.md)
+* [x] [UG103.7: Non-Volatile Data Storage Fundamentals (Rev. 1.6)](docs/UG103.7%20Non-Volatile%20Data%20Storage%20Fundamentals.md)
