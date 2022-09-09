@@ -74,12 +74,16 @@
 
 ## Thread
 
-### 入门
+### Getting Started
 
-* [x] [Getting Started with Simplicity Studio 5 and the Gecko SDK (Rev. 5.4.2)](docs/Getting%20Started%20with%20Simplicity%20Studio%205%20and%20the%20Gecko%20SDK.md) —— 介绍如何下载开发工具和 Gecko SDK（包括 Silicon Labs OpenThread）。介绍 Simplicity Studio 5 的界面。
-* [x] [QSG170: Silicon Labs OpenThread Quick Start Guide (Rev. 0.5)](docs/QSG170%20Silicon%20Labs%20OpenThread%20Quick-Start%20Guide.md) —— 提供关于使用 Silicon Labs OpenThread stack 配置、构建和安装应用程序的基本信息。
-* [x] [UG103.11: Thread Fundamentals (Rev. 1.4)](docs/UG103.11%20Thread%20Fundamentals.md) —— 面向刚接触 OpenThread 的开发者，其中包含 Thread 的简要出现背景、技术概述，并描述了在实现 Thread 解决方案时需要考虑的 Thread 的一些关键特性。
-* [x] [UG103.01: Wireless Networking Fundamentals (Rev. 1.5)](docs/UG103.1%20Wireless%20Networking%20Application%20Development%20Fundamentals.md) —— 面向刚接触无线网络的开发者，介绍了无线网络的一些基本概念。这些概念在其他基础知识文档中有所提及。
+* [x] [Getting Started with Simplicity Studio 5 and the Gecko SDK](docs/Getting%20Started%20with%20Simplicity%20Studio%205%20and%20the%20Gecko%20SDK.md)<br>Describes downloading development tools and the Gecko SDK, which includes Silicon Labs OpenThread. Introduces the Simplicity Studio 5 interface.
+* [x] [QSG170: Silicon Labs OpenThread Quick Start Guide](docs/QSG170%20Silicon%20Labs%20OpenThread%20Quick-Start%20Guide.md)<br>Provides basic information on configuring, building, and installing applications using the Silicon Labs OpenThread stack.
+* [x] [UG103.11: Thread Fundamentals](docs/UG103.11%20Thread%20Fundamentals.md)<br>For those new to OpenThread, includes a brief background on the emergence of Thread, provides a technology overview, and describes some key features of Thread to consider when implementing a Thread solution.
+* [x] [UG103.01: Wireless Networking Fundamentals](docs/UG103.1%20Wireless%20Networking%20Application%20Development%20Fundamentals.md)<br>For those new to wireless networking, introduces some fundamental concepts of wireless networking. These concepts are referred to in other Fundamentals documents.
+
+### Developing with OpenThread
+
+* [x] [AN1256: Using the Silicon Labs RCP with the OpenThread Border Router](docs/AN1256%20Using%20the%20Silicon%20Labs%20RCP%20with%20the%20OpenThread%20Border%20Router.md)<br>Describes using the OpenThread Border Router GitHub repository and the Silicon Labs OpenThread Radio Co-Processor (RCP) application to create a Thread Border Router.
 
 ## Zigbee
 
