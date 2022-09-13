@@ -86,6 +86,7 @@
 * [x] [AN1256: Using the Silicon Labs RCP with the OpenThread Border Router](docs/AN1256%20Using%20the%20Silicon%20Labs%20RCP%20with%20the%20OpenThread%20Border%20Router.md)<br>Describes using the OpenThread Border Router GitHub repository and the Silicon Labs OpenThread Radio Co-Processor (RCP) application to create a Thread Border Router.
 * [x] [AN1350: Single-Band Proprietary Sub-GHz Support with OpenThread](docs/AN1350%20Single-Band%20Proprietary%20Sub-GHz%20Support%20with%20OpenThread.md)<br>Describes how to configure OpenThread applications to operate on a proprietary sub-GHz band using the Silicon Labs OpenThread SDK and Simplicity Studio 5 with a compatible mainboard. It also provides details on the proprietary radio PHY supported with this feature.
 * [x] [AN1264: Using OpenThread with Free RTOS](docs/AN1264%20Using%20Open%20Thread%20with%20FreeRTOS.md)<br>Describes how to build OpenThread applications with FreeRTOS.
+* [x] [AN1372: Configuring OpenThread Applications for Thread 1.3](docs/AN1372%20Configuring%20OpenThread%20Applications%20for%20Thread%201.3.md)<br>Provides instructions for configuring OpenThread SoC and Border Router applications to use Thread 1.3 features.
 
 ## Zigbee
 
