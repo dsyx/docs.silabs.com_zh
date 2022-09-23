@@ -588,9 +588,9 @@
 <div>
     <details>
         <summary></summary>
-        <p>Complete build instructions are detailed here: <a href=""https://openthread.io/guides/border-router/build>https://openthread.io/guides/border-router/build</a></p>
+        <p>Complete build instructions are detailed here: <a href="https://openthread.io/guides/border-router/build">https://openthread.io/guides/border-router/build</a></p>
     </details>
-    <p>此处详细介绍了完整的构建说明：<a href=""https://openthread.io/guides/border-router/build>https://openthread.io/guides/border-router/build</a></p>
+    <p>此处详细介绍了完整的构建说明：<a href="https://openthread.io/guides/border-router/build">https://openthread.io/guides/border-router/build</a></p>
 </div>
 
 <div>
