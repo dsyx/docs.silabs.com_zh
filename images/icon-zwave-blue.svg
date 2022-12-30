@@ -1,0 +1,10 @@
+<svg id="icon-zwave-blue" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <g id="Group_12791" data-name="Group 12791">
+    <path id="Path_11349" data-name="Path 11349" d="M24,0A24,24,0,1,1,0,24,24,24,0,0,1,24,0Z" fill="#0F62FE"/>
+    <g id="Group_13028" data-name="Group 13028" transform="translate(6 7.5)">
+      <path id="Path_11397" data-name="Path 11397" d="M21.43,13.723a7.708,7.708,0,1,0,7.708,7.707A7.706,7.706,0,0,0,21.43,13.723Zm2.312,11.461H17.2l3.537-5.547H17.348l1.469-2.355h6.444l-3.438,5.472h3.438Z" transform="translate(-2.139 -2.139)" fill="#fff"/>
+      <path id="Path_11398" data-name="Path 11398" d="M25.292,8.6V6A19.314,19.314,0,0,0,6,25.292H8.6A16.71,16.71,0,0,1,25.292,8.6" transform="translate(-6 -6)" fill="#fff"/>
+      <path id="Path_11399" data-name="Path 11399" d="M23.578,12.029v-2.6A14.166,14.166,0,0,0,9.428,23.578h2.6A11.561,11.561,0,0,1,23.578,12.029" transform="translate(-4.286 -4.286)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

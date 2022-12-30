@@ -239,7 +239,7 @@ Silicon Labs 的 EFR32 和 EM3x 集成电路系列使用一种偏移正交相移
 Silicon Labs 开发了网络硬件（EFR32xG 和 EM3x 系列）和 SDK（包括协议库、应用示例和开发工具），以便实现用于传感和控制的无线个域网设备。下图是使用 Silicon Labs 网络技术之一的 Zigbee 典型无线设备。射频数据调制解调器是负责在网络上发送和接收数据的硬件。微控制器代表计算机控制元件，它发起消息并响应收到的任何信息。传感器块可以是任何类型的传感器或控制设备。这样的系统可以作为网络上的节点而无需任何额外的设备。具有兼容软件的任何两个这样的节点都可以形成网络。大型网络可以包含数千个这样的节点。
 
 <p>
-    <img src="../images/UG103.1/Figure%206.1.%20Typical%20Zigbee%20Device%20Block%20Diagram.png"
+    <img src="images/Figure%206.1.%20Typical%20Zigbee%20Device%20Block%20Diagram.png"
          alt="Figure 6.1. Typical Zigbee Device Block Diagram"
          title="Figure 6.1. Typical Zigbee Device Block Diagram">
 </p>

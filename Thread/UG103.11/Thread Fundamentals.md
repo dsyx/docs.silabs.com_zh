@@ -82,7 +82,7 @@ Thread Specification 1.1 可以在此处提交请求后下载：[https://www.thr
 
 Thread 是一种安全的无线网状（mesh）网络协议。Thread 栈（stack）是一个开放标准，它建立在现有的 IEEE（Institute for Electrical and Electronics Engineers）和 IETF（Internet Engineering Task Force）标准的集合之上，而不是一个全新的标准（参见下图）。
 
-![Figure 1.1. Thread Stack Overview](../images/UG103.11/1.3.png)
+![Figure 1.1. Thread Stack Overview](images/1.3.png)
 
 ## 1.4 Thread 的一般特征
 
@@ -131,7 +131,7 @@ Thread Specification 1.2 旨在通过提高 Thread 网络的响应能力和更�
 
 用户通过其 HAN（Home Area Network，家域网）上的 Wi-Fi 或使用一个基于云的应用程序从他们自己的设备（智能手机、平板电脑或计算机）与家庭的 Thread 网络进行通信。下图说明了该 Thread 网络架构中的关键设备类型。
 
-![Figure 2.1. Thread Network Architecture](../images/UG103.11/2.2.1.png)
+![Figure 2.1. Thread Network Architecture](images/2.2.1.png)
 
 Thread 网络中包含以下设备类型，从 Wi-Fi 网络开始：
 
@@ -147,7 +147,7 @@ Thread 网络中包含以下设备类型，从 Wi-Fi 网络开始：
 
 Thread 商业（Commercial）模型采用家庭网络的关键设备类型并添加了一些新概念。用户通过 Wi-Fi 或企业网络通过设备（智能手机、平板电脑或计算机）与商业网络进行通信。下图说明了一个商业网络拓扑。
 
-![Figure 2.2. Commercial Network Topology](../images/UG103.11/2.2.2-1.png)
+![Figure 2.2. Commercial Network Topology](images/2.2.2-1.png)
 
 这些概念有：
 
@@ -158,7 +158,7 @@ Thread 商业（Commercial）模型采用家庭网络的关键设备类型并添
 
 这些概念如下图所示：
 
-![Figure 2.3. Thread Domain Model](../images/UG103.11/2.2.2-2.png)
+![Figure 2.3. Thread Domain Model](images/2.2.2-2.png)
 
 ## 2.3 无单点故障
 
@@ -192,7 +192,7 @@ IPv6 地址的高位指定网络，其余位指定该网络中的特定地址。
 
 Thread 使用链路层转发根据 IP 路由表转发数据包。为了实现这一点，在每个多跳数据包中使用了 6LoWPAN Mesh Header（参见下图）。
 
-![Figure 3.1. Mesh Header Format](../images/UG103.11/3.3.png)
+![Figure 3.1. Mesh Header Format](images/3.3.png)
 
 在 Thread 中，6LoWPAN 层用发起者的 16 位短地址和最终目的地的 16 位源地址填充 Mesh Header 信息。发送端在路由表（Routing Table）中查找下一跳 16 位短地址，然后将 6LoWPAN 帧发送到下一跳 16 位短地址作为目的地。下一跳设备收到数据包，在路由表/邻居表（Routing Table / Neighbor Table）中查找下一跳，递减 6LoWPAN Mesh Header 中的 hop 计数，然后将数据包发送到下一跳或最终目的地 16 位短地址的目的地。
 
@@ -202,7 +202,7 @@ Thread 使用链路层转发根据 IP 路由表转发数据包。为了实现这
 
 6LoWPAN 数据包的构造原理与 IPv6 数据包相同，并包含每个附加功能的堆叠报头。每个 6LoWPAN 报头前面都有一个分派值，用于标识报头的类型（参见下图）。
 
-![Figure 3.2. General Format of a 6LoWPAN Packet](../images/UG103.11/3.4-1.png)
+![Figure 3.2. General Format of a 6LoWPAN Packet](images/3.4-1.png)
 
 Thread 使用以下类型的 6LoWPAN 报头：
 
@@ -216,15 +216,15 @@ Thread 使用以下类型的 6LoWPAN 报头：
 
 在下图中，6LoWPAN 有效负载由压缩的 IPv6 报头和 IPv6 有效负载的其余部分组成。
 
-![Figure 3.3. 6LoWPAN Packet Containing IPv6 Payload with Compressed IPv6 Header](../images/UG103.11/3.4-2.png)
+![Figure 3.3. 6LoWPAN Packet Containing IPv6 Payload with Compressed IPv6 Header](images/3.4-2.png)
 
 在下图中，6LoWPAN 有效负载包含 IPv6 报头和部分 IPv6 有效负载。
 
-![Figure 3.4. 6LoWPAN Packet Containing Mesh Header, a Fragmentation Header, and a Compression Header](../images/UG103.11/3.4-3.png)
+![Figure 3.4. 6LoWPAN Packet Containing Mesh Header, a Fragmentation Header, and a Compression Header](images/3.4-3.png)
 
 其余的有效负载将按照下图中的格式在后续数据包中传输。
 
-![Figure 3.5. 6LoWPAN Subsequent Fragment](../images/UG103.11/3.4-4.png)
+![Figure 3.5. 6LoWPAN Subsequent Fragment](images/3.4-4.png)
 
 ## 3.5 ICMP
 
@@ -491,7 +491,7 @@ Thread 1.2 中的 Commercial Extensions 允许大规模身份验证、网络加�
 
 Thread 是一个无线网状网络栈，负责在 [2.2 Thread 网络架构](#22-thread-网络架构) 中描述的 Thread 网络中的不同设备之间路由消息。下图说明了 Thread 协议中的各层。
 
-![Figure 12.1. Thread Protocol Layers](../images/UG103.11/12.png)
+![Figure 12.1. Thread Protocol Layers](images/12.png)
 
 应用层的标准定义是 “指定通信网络中主机使用的共享协议和接口方法的抽象层”（[https://en.wikipedia.org/wiki/Application_layer](https://en.wikipedia.org/wiki/Application_layer)）。更简单地说，应用层是 “设备的语言”，例如，开关如何与灯泡对话。在这种定义下，Thread 中不存在应用层。客户根据 Thread 栈中的功能和自己的需求构建应用层。虽然 Thread 不提供应用层，但是它提供了基本的应用服务：
 

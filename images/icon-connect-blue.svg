@@ -1,0 +1,15 @@
+<svg id="icon-connect-blue" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <circle id="Ellipse_1" data-name="Ellipse 1" cx="24" cy="24" r="24" fill="#0F62FE"/>
+  <g id="Group_13674" data-name="Group 13674" transform="translate(11.004 9)">
+    <g id="Layer_2" data-name="Layer 2">
+      <path id="Path_12094" data-name="Path 12094" d="M16,2.064,3.928,9.029V22.965L16,29.936l12.067-6.971V9.029Zm.592,1.711,9.7,5.6-9.7,5.6Zm-1.184,11.2-9.7-5.6,9.7-5.6ZM14.815,16l-9.7,5.6V10.4Zm.593,1.026v11.2l-9.7-5.6Zm1.184,0,9.7,5.6-9.7,5.6ZM17.185,16l9.7-5.6V21.6Z" transform="translate(-2.575 -0.7)" fill="#fff"/>
+      <circle id="Ellipse_69" data-name="Ellipse 69" cx="2.048" cy="2.048" r="2.048" transform="translate(11.378)" fill="#fff"/>
+      <circle id="Ellipse_70" data-name="Ellipse 70" cx="2.048" cy="2.048" r="2.048" transform="translate(22.755 6.588)" fill="#fff"/>
+      <circle id="Ellipse_71" data-name="Ellipse 71" cx="2.048" cy="2.048" r="2.048" transform="translate(22.755 19.798)" fill="#fff"/>
+      <circle id="Ellipse_72" data-name="Ellipse 72" cx="2.048" cy="2.048" r="2.048" transform="translate(11.378 26.504)" fill="#fff"/>
+      <circle id="Ellipse_73" data-name="Ellipse 73" cx="2.048" cy="2.048" r="2.048" transform="translate(0 19.798)" fill="#fff"/>
+      <circle id="Ellipse_74" data-name="Ellipse 74" cx="2.048" cy="2.048" r="2.048" transform="translate(0 6.588)" fill="#fff"/>
+      <circle id="Ellipse_75" data-name="Ellipse 75" cx="2.456" cy="2.456" r="2.456" transform="translate(10.969 12.843)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

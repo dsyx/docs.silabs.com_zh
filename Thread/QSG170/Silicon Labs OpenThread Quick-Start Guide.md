@@ -27,13 +27,13 @@
     - [5.3.1 Energy Profiler 与 Sleepy-demo 应用程序](#531-energy-profiler-与-sleepy-demo-应用程序)
   - [5.4 Network Analyzer](#54-network-analyzer)
 
-本文档介绍如何使用 Silicon Labs OpenThread SDK（Software Development Kit）、Simplicity Studio® 5 和一个兼容的无线入门套件来开始 OpenThread 开发。
+本文档介绍如何使用 Silicon Labs OpenThread SDK（Software Development Kit）、Simplicity Studio® 5 和一个兼容的 wireless starter kit 来入门 OpenThread 开发。
 
 # 1 引言
 
 Google 的 OpenThread 是一个 Thread 开源实现。谷歌发布的 OpenThread 可以使开发人员全面地使用 Google Nest 产品中使用的网络技术，以加速互联家庭和商业建筑的产品开发。
 
-凭借一个狭窄的（narrow）平台抽象层和较小的内存占用，OpenThread 具有高度可移植性。它支持 SoC（system-on-chip）和 NCP（network co-processor）设计。OpenThread 实现了 Thread 1.1.1 和 Thread 1.2 规范中定义的所有特性。该规范定义了一种基于 IPv6 的可靠、安全和低功耗的无线设备到设备通信协议，适用于家庭和商业建筑应用。
+凭借一个窄（narrow）平台抽象层和较小的内存占用，OpenThread 具有高度可移植性。它支持 SoC（system-on-chip）和 NCP（network co-processor）设计。OpenThread 实现了 Thread 1.1.1 和 Thread 1.2 规范中定义的所有特性。该规范定义了一种 IPv6-based 的可靠、安全和低功耗的无线设备到设备通信协议，适用于家庭和商业建筑应用。
 
 本指南介绍如何使用随 Gecko SDK 和 SSv5（Simplicity Studio 5）提供的 Silicon Labs OpenThread SDK 开始开发 OpenThread 应用程序。SSv5 包含了使用 Silicon Labs 设备进行物联网产品开发所需的一切，这包括了资源和项目启动器、软件配置工具、带有 GNU 工具链的完整 IDE 和分析工具。本文档重点介绍 SS5 环境中的应用和开发。除此之外，您可以通过从 GitHub 中下载或克隆最新版本来手动安装 Gecko SDK。有关更多信息，请参阅 [https://github.com/SiliconLabs/gecko_sdk](https://github.com/SiliconLabs/gecko_sdk)。
 
@@ -41,7 +41,7 @@ Google 的 OpenThread 是一个 Thread 开源实现。谷歌发布的 OpenThread
 
 Silicon Labs OpenThread SDK 基于 Gecko Platform component-based 设计，其中每个组件（component）都提供一个特定的功能。组件由源文件和属性的集合组成。Component-based 设计通过添加、配置和删除组件来实现定制化。应用程序开发人员可以使用 SSv5 的项目配置器（Project Configurator）和组件编辑器（Component Editor），通过包含与所需功能匹配的组件并配置与这些组件关联的各种属性，可以简易地装配所需的功能。
 
-Silicon Labs OpenThread SDK 基于 GitHub 中提供的 OpenThread 协议栈（stack），但还有许多增强功能，包括支持额外的平台和功能、额外的示例应用程序，以及额外的元数据以允许无缝集成到 SSv5。
+Silicon Labs OpenThread SDK 基于 GitHub 中提供的 OpenThread 栈（stack），但还有许多增强功能，包括支持额外的平台和功能、额外的示例应用程序，以及额外的元数据以允许无缝集成到 SSv5。
 
 **平台和功能**：Silicon Labs 强化了 OpenThread 源码和支持 EFR32 平台的平台抽象层，以提供 Gecko Platform 提供的附加功能，例如：
 
@@ -60,7 +60,7 @@ Silicon Labs OpenThread SDK 基于 GitHub 中提供的 OpenThread 协议栈（st
 
 Silicon Labs OpenThread SDK 包含完整的 OpenThread GitHub 目录结构，但不使用 GitHub 解决方案提供的 makefile 构建系统。相反，Silicon Labs OpenThread SDK 使用 SSv5 提供的构建系统。GitHub makefile 构建选项已作为组件配置选项提供，并在 [3.2 配置项目](#32-配置项目) 中进行了讨论。在使用 Silicon Labs OpenThread SDK 构建 Host-RCP 应用程序（例如 OpenThread Border Router）时，请确保 Host 和 RCP（Radio Co-Processor）都使用同一 SDK 下的代码。
 
-请参阅 Simplicity Studio 和 [docs.silabs.com](https://docs.silabs.com/simplicity-studio-5-users-guide/latest/) 中提供的发行说明，了解有关特性和用于该发行版的 OpenThread 协议栈版本的描述。
+请参阅 Simplicity Studio 和 [docs.silabs.com](https://docs.silabs.com/simplicity-studio-5-users-guide/latest/) 中提供的发行说明，了解有关特性和用于该发行版的 OpenThread 栈版本的描述。
 
 ### 1.1.1 Simplicity Studio 5（SSv5）
 
@@ -91,21 +91,21 @@ Gecko Platform 是驱动程序（driver）和其他与 Silicon Labs 芯片及模
 
 您可以通过 SSv5 的 Learn and Support 下的 Welcome 视图访问位于 [https://www.silabs.com/support](https://www.silabs.com/support) 的 Silicon Labs 支持门户。如果您在开发过程中遇到任何问题，请使用支持门户联系客户支持。
 
-![](../images/QSG170/1.3.png)
+![](images/1.3.png)
 
 ## 1.4 文档
 
 相关文档可以通过 SSv5 获得。它根据您所选择的部件进行过滤。可以通过部件 OVERVIEW 选项卡上的链接访问特定于硬件的文档。
 
-![](../images/QSG170/1.4-1.png)
+![](images/1.4-1.png)
 
 SDK 文档和其他参考资料可通过 DOCUMENTATION 选项卡获得。使用 Thread Technology Type 复选框进行过滤，以查看与 OpenThread SDK 最密切相关的文档。
 
-![](../images/QSG170/1.4-2.png)
+![](images/1.4-2.png)
 
 SSv5 及其工具记录在在线的 *Simplicity Studio 5 User's Guide* 中，可在 [https://docs.silabs.com/](https://docs.silabs.com/) 上以及通过 SSv5 帮助菜单获得。
 
-![](../images/QSG170/1.4-3.png)
+![](images/1.4-3.png)
 
 # 2 关于示例应用程序和演示
 
@@ -117,7 +117,7 @@ SSv5 及其工具记录在在线的 *Simplicity Studio 5 User's Guide* 中，可
 
 演示是可以下载到兼容设备的预构建固件映像。查找演示是否可用于您的部件的最快方法是在 My Products 视图中添加部件或板信息，然后导航到 Launcher 透视图中的 EXAMPLE PROJECTS & DEMOS 选项卡。关闭 Example Projects 过滤器。Solution Examples 过滤器用于将来。
 
-![](../images/QSG170/2.1.png)
+![](images/2.1.png)
 
 随 OpenThread SDK 提供的预编译演示应用程序映像与以下板兼容：
 
@@ -133,7 +133,7 @@ SSv5 及其工具记录在在线的 *Simplicity Studio 5 User's Guide* 中，可
 
 由于通常您最终会将已编译的应用程序映像刷写到设备，因此请将设备连接到您的计算机并在 Debug Adapters 视图中选择它。在 Launcher 透视图的 EXAMPLE PROJECTS & DEMOS 选项卡中，根据 'Thread' technology type 过滤示例项目并关闭 **Demos**。
 
-![](../images/QSG170/2.2.png)
+![](images/2.2.png)
 
 Silicon Labs OpenThread SDK 提供的示例应用程序如下。大多数示例有两种变体：FTD（Full Thread Device）和 MTD（Minimal Thread Device），并且面向 SoC、NCP 和 RCP 应用程序模型。
 
@@ -147,9 +147,9 @@ Silicon Labs OpenThread SDK 提供的示例应用程序如下。大多数示例�
 * Multi-PAN RCP
 * Multi-PAN RCP and CPC over SPI/UART
 
-**OpenThread – SoC CLI (FTD)**：与 OpenThread GitHub 存储库中的 ot-cli-ftd 应用程序等同的 CLI 应用程序，用于在为 SoC 设计的 FTD 上测试 OpenThread 协议栈。此应用程序可用于针对 Thread Test Harness 测试 OpenThread 协议栈，以进行互操作性测试。
+**OpenThread – SoC CLI (FTD)**：与 OpenThread GitHub 存储库中的 ot-cli-ftd 应用程序等同的 CLI 应用程序，用于在为 SoC 设计的 FTD 上测试 OpenThread 栈。此应用程序可用于针对 Thread Test Harness 测试 OpenThread 栈，以进行互操作性测试。
 
-**OpenThread – SoC CLI (MTD)**：与 OpenThread GitHub 存储库中的 ot-cli-mtd 应用程序等同的 CLI 应用程序，用于在为 SoC 设计 MTD 上测试 OpenThread 协议栈。
+**OpenThread – SoC CLI (MTD)**：与 OpenThread GitHub 存储库中的 ot-cli-mtd 应用程序等同的 CLI 应用程序，用于在为 SoC 设计 MTD 上测试 OpenThread 栈。
 
 **OpenThread – NCP (FTD)**：一个 OpenThread FTD 应用程序，等同于 OpenThread GitHub 存储库中为 NCP 设计的 ot-ncp-ftd 应用程序。虽然应用层位于 host 处理器上，但此应用程序在 802.15.4 SoC 上运行 OpenThread core。
 
@@ -182,7 +182,7 @@ Silicon Labs OpenThread SDK 提供的示例应用程序如下。大多数示例�
 
 注意：为了在 Simplicity Studio 5 中获得最佳性能，请确保主板上的电源开关处于 Advanced Energy Monitoring 或 “AEM” 位置，如下图所示。
 
-![](../images/QSG170/3.png)
+![](images/3.png)
 
 在这些说明中，您将在两个节点上编译和加载一个简单的 **ot-cli-ftd** 应用程序。[3.5 创建网络](#35-创建网络) 描述了如何使用示例以创建网络。[5.4 Network Analyzer](#54-network-analyzer) 描述了如何使用 Network Analyzer 来观察网络中的流量。
 
@@ -201,19 +201,19 @@ SSv5 提供了多种使用示例应用程序开始项目的方法。[https://doc
 <ol>
     <li>
         打开 SSv5 的文件菜单并选择 <strong>New > Silicon Labs Project Wizard</strong>。这会打开 Target, SDK, and Toolchain Selection 对话框。不要更改 OpenThread 支持的默认 <strong>Simplicity IDE / GNU</strong> 工具链。<br>
-        <img src="../images/QSG170/3.1-1.png">
+        <img src="images/3.1-1.png">
     </li>
     <li>
         这会打开 Example Project Selection 对话框。使用 'Thread' Technology Type 和 Keyword 过滤器搜索特定示例，在本例中为 <strong>OpenThread – SoC CLI (FTD)</strong>。选择它并点击<strong>NEXT</strong>。<br>
-        <img src="../images/QSG170/3.1-2.png">
+        <img src="images/3.1-2.png">
     </li>
     <li>
         这会打开 Project Configuration 对话框。在这里，您可以重命名您的项目，更改默认的项目文件位置，并确定您是否将链接到或复制项目文件。请注意，如果您更改任何链接的资源，则引用它的任何其他项目都会被更改。点击<strong>FINISH</strong>。<br>
-        <img src="../images/QSG170/3.1-3.png">
+        <img src="images/3.1-3.png">
     </li>
     <li>
-        这会打开 Simplicity IDE Perspective，并在 README 选项卡上展示项目描述。点击 \<project\>.slcp 选项卡以打开项目配置器的 OVERVIEW 选项卡。有关通过 Simplicity IDE 透视图和项目配置器提供的功能的详细信息，请参阅在线的 <em>Simplicity Studio 5 User's Guide</em>。<br>
-        <img src="../images/QSG170/3.1-4.png">
+        这会打开 Simplicity IDE Perspective，并在 README 选项卡上展示项目描述。点击 &lt;project&gt;.slcp 选项卡以打开项目配置器的 OVERVIEW 选项卡。有关通过 Simplicity IDE 透视图和项目配置器提供的功能的详细信息，请参阅在线的 <em>Simplicity Studio 5 User's Guide</em>。<br>
+        <img src="images/3.1-4.png">
     </li>
 </ol>
 
@@ -223,23 +223,23 @@ Silicon Labs OpenThread 应用程序建立在 Gecko Platform 组件结构之上�
 
 > 注意：所有 EFR32 部件都有唯一的 RSSI 偏移。此外，电路板、天线和外壳设计也会影响 RSSI。创建新项目时，安装 **RAIL Utility, RSSI** 组件。此特性包括 Silicon Labs 为每个部件测量的默认 RSSI 偏移。如果需要，可以在对整个产品进行射频测试后修改此偏移量。
 
-![](../images/QSG170/3.2-1.png)
+![](images/3.2-1.png)
 
 项目通过安装和卸载组件，以及配置已安装的组件来进行配置。已安装的组件会被勾选。点击 Installed Components 可以查看示例应用程序已安装的组件的过滤列表。
 
 可配置组件会有一个齿轮符号。选择一个组件可以查看有关它的信息。
 
-![](../images/QSG170/3.2-2.png)
+![](images/3.2-2.png)
 
 如果组件是可配置的，点击 **CONFIGURE** 可以打开组件编辑器。
 
-例如，在 Stack (FTD) 组件中，您可以启用或禁用各种协议栈功能。这些等同于在 GitHub 中构建示例应用程序时为其指定 makefile 构建选项。
+例如，在 Stack (FTD) 组件中，您可以启用或禁用各种栈功能。这些等同于在 GitHub 中构建示例应用程序时为其指定 makefile 构建选项。
 
-![](../images/QSG170/3.2-3.png)
+![](images/3.2-3.png)
 
 您所做的任何更改都会自动保存，并且项目文件会自动生成。进度显示在 Simplicity IDE 透视图的右下角。
 
-![](../images/QSG170/3.2-4.png)
+![](images/3.2-4.png)
 
 ## 3.3 构建项目
 
@@ -250,17 +250,17 @@ Silicon Labs OpenThread 应用程序建立在 Gecko Platform 组件结构之上�
 <ol>
     <li>
         您可以在 Simplicity IDE 中自动编译并刷写应用程序到您所连接的开发硬件。在 Generation Confirmation 对话框中点击 OK 后，Simplicity IDE 将返回。点击 <strong>Debug</strong> 控件。<br>
-        <img src="../images/QSG170/3.3.1-1.png">
+        <img src="images/3.3.1-1.png">
     </li>
     <li>
         控制台会显示进度，右下角有进度条。<br>
-        <img src="../images/QSG170/3.3.1-2.png">
+        <img src="images/3.3.1-2.png">
     </li>
     <li>
         构建和刷写完成后，会显示一个 Debug 透视图。点击 <strong>Resume</strong> 控件可以开始在设备上运行应用程序。<br>
-        <img src="../images/QSG170/3.3.1-3.png"><br>
+        <img src="images/3.3.1-3.png"><br>
         Resume 控件旁边是 <strong>Suspend</strong>、<strong>Disconnect</strong>、<strong>Reconnect</strong> 和 <strong>stepping</strong> 控件。当您准备好退出调试模式时，请点击 <strong>Disconnect</strong>。<br>
-        <img src="../images/QSG170/3.3.1-4.png">
+        <img src="images/3.3.1-4.png">
     </li>
 </ol>
 
@@ -269,14 +269,14 @@ Silicon Labs OpenThread 应用程序建立在 Gecko Platform 组件结构之上�
 <ol>
     <li>
         生成项目文件后，不要点击 Simplicity IDE 中的 Debug，而是点击顶部工具栏中的 <strong>Build</strong> 控件（锤子图标）。<br>
-        <img src="../images/QSG170/3.3.2-1.png">
+        <img src="images/3.3.2-1.png">
     </li>
     <li>
         您可以通过 Project Explorer 视图加载二进制映像。<br>
         在编译器子目录中可以找到 &lt;project&gt;.bin、.hex 或 .s37 文件。<br>
-        <img src="../images/QSG170/3.3.2-2.png"><br>
+        <img src="images/3.3.2-2.png"><br>
         右键该文件并选择 <strong>Flash Programmer</strong>。或者，您可能会看到 <strong>Flash to Device...</strong> 选项，在这种情况下，您需要选择要编程的设备，这将会打开一个 Flash Programmer 对话框。Flash Programmer 将打开并填充好了文件路径。点击 <strong>PROGRAM</strong>。<br>
-        <img src="../images/QSG170/3.3.2-3.png">
+        <img src="images/3.3.2-3.png">
     </li>
 </ol>
 
@@ -294,7 +294,7 @@ Silicon Labs OpenThread 应用程序建立在 Gecko Platform 组件结构之上�
 
 要启动 Console 界面，请在 Simplicity IDE 透视图中右键 Devices View / Debug Adapters Window 中的 J-Link 设备。选择 **Launch Console**。或者，从 Simplicity IDE 工具栏中的 Tools 图标，Launcher 透视图中的菜单选择 Device Console。要在 Console 上获得提示，请选择 Serial 1 选项卡并键入 Enter。
 
-![](../images/QSG170/3.5-1.png)
+![](images/3.5-1.png)
 
 要使用 ot-cli-ftd 示例创建一个两个节点的网络，请在两个单独的节点上刷写 **ot-cli-ftd.s37** 应用程序映像。启动两个节点的 Console 并执行以下命令：
 
@@ -393,7 +393,7 @@ Done
 
 下图展示了该过程结束时的 Console。
 
-![](../images/QSG170/3.5-2.png)
+![](images/3.5-2.png)
 
 # 4. 下一步
 
@@ -599,13 +599,13 @@ Done
 
 Simplicity Commander 是一个简单的刷写工具，可以用于刷写固件映像、擦除 Flash、锁定和解锁调试访问以及通过 J-Link 接口写受保护的 Flash 页。其有 GUI 和 CLI（Command Line Interface）可用。有关详细信息，请参阅 *UG162: Simplicity Commander Reference Guide for more information*。
 
-![](../images/QSG170/5.1.png)
+![](images/5.1.png)
 
 ## 5.2 Pin Tool
 
 Simplicity Studio 提供了一个 Pin Tool，它可以让您轻松地配置新外设或更改现有外设的属性。在 CONFIGURATION TOOLS 选项卡中，点击 Pin Tool 卡片上的 Open 或在 Project Explorer 视图中双击文件 \<project\>.pintool 可以打开它。
 
-![](../images/QSG170/5.2.png)
+![](images/5.2.png)
 
 双击一个 Software Component 会打开组件编辑器并配置该功能。Pin Tool 不会自动保存。
 
@@ -615,15 +615,15 @@ Multi-Node Energy Profiler 是一个附加工具，您可以使用它轻松地�
 
 要分析当前项目，请在 Simplicity IDE 透视图中下拉 Profile as 菜单，然后选择 Profile as / Simplicity Energy Profiler target。这会自动构建您的项目，将其上传到设备，然后启动 Energy Profiler。
 
-![](../images/QSG170/5.3-1.png)
+![](images/5.3-1.png)
 
 有关如何启动 Energy Profiler 或在 Simplicity IDE 和 Energy Profiler 视角之间切换的详细信息，请参阅 *UG343: Multi-Node Energy Profiler User's Guide*。
 
-![](../images/QSG170/5.3-2.png)
+![](images/5.3-2.png)
 
 对于运行 ot-cli-ftd 应用程序的节点，Energy Profiler 捕获应如下图所示：
 
-![](../images/QSG170/5.3-3.png)
+![](images/5.3-3.png)
 
 请注意，您观察到的功耗结果可能会有所不同，因为外围设备及其能耗模式高度依赖于特定设备。
 
@@ -647,21 +647,21 @@ Energy Profiler 可用于任何正在运行的项目，一个很好的例子是 
     </li>
     <li>
         启动 Energy Profiler，在节点 B（MTD）上开始采集，然后按下节点 B 主板的 button 0。<br>
-        <img src="../images/QSG170/5.3.1-1.png"><br>
+        <img src="images/5.3.1-1.png"><br>
         按下节点 B（MTD）主板上的 button 0 将使节点在 MED（Minimal End Device）和 SED（Sleepy End Device）之间切换，SED 会在空闲时关闭 RX。由于该节点使用 EFR32 的低功耗 EM2 模式，电流消耗将会显着下降（从 mA 到 µA），如下图所示。<br>
-        <img src="../images/QSG170/5.3.1-2.png"><br>
+        <img src="images/5.3.1-2.png"><br>
         每 2 秒（即睡眠周期）会看到一个规则峰值表示节点短暂唤醒以向其父节点发送数据轮询消息的微小间隔，之后它又回到睡眠状态。<br>
         点击 Play 可以暂停分析。如需进一步分析，请点击其中一个峰，然后可以放大时间轴（x 轴）和电流轴（y 轴）。请注意，最大功耗现在可能大于放大之前图表上显示的值。这是因为在缩小模式下，显示的值是平均的。如果您需要精确值，请始终放大。要测量平均功耗，只需在一个时间间隔内点击并拖动鼠标。右上角会出现一个新窗口，显示给定时间间隔的功耗信息。<br>
-        <img src="../images/QSG170/5.3.1-3.png"><br>
+        <img src="images/5.3.1-3.png"><br>
         Multi-node Energy Profiler 还能够同时测量多个设备的功耗。要开始测量一个新设备，请点击 Quick Access 菜单（左上角），选择 <strong>Start Energy Capture</strong> 并选择 <strong>Multi-Node View</strong>。要停止测量，请点击 Quick Access 菜单，然后选择 <strong>End/Save session</strong>。<br>
-        <img src="../images/QSG170/5.3.1-4.png"><br>
+        <img src="images/5.3.1-4.png"><br>
         要了解有关如何使用此工具的更多信息，请参阅 <em>UG343: Multi-Node Energy Profiler User's Guide</em>。
     </li>
 </ol>
 
 ## 5.4 Network Analyzer
 
-Silicon Labs Network Analyzer 是一个分组（packet）采集和调试工具，可用于调试在 EFR32 平台上运行 OpenThread 协议栈的无线节点之间的连通性。它通过网络流量、活动和持续时间的图形视图显着地促进网络和应用程序的开发过程。有关 Network Analyzer 的指南，请参阅在线的 *Simplicity Studio 5 User's Guide*，这可通过 [https://docs.silabs.com/](https://docs.silabs.com/) 和 SSv5 帮助菜单获得。
+Silicon Labs Network Analyzer 是一个分组（packet）采集和调试工具，可用于调试在 EFR32 平台上运行 OpenThread 栈的无线节点之间的连通性。它通过网络流量、活动和持续时间的图形视图显着地促进网络和应用程序的开发过程。有关 Network Analyzer 的指南，请参阅在线的 *Simplicity Studio 5 User's Guide*，这可通过 [https://docs.silabs.com/](https://docs.silabs.com/) 和 SSv5 帮助菜单获得。
 
 Packet Trace 应用程序直接从 Wireless Gecko SoC 和 module 上可用的 PTI（Packet Trace Interface）采集分组。因此，与 air-based 采集相比，它提供了更准确的分组采集。
 
@@ -670,17 +670,17 @@ Packet Trace 应用程序直接从 Wireless Gecko SoC 和 module 上可用的 PT
 <ol>
     <li>
         在 Preferences 窗口（<strong>Simplicity Studio > Preferences</strong>）的 <strong>Network Analyzer > Decoding > Stack Versions</strong> 下，选择 OpenThread stack 选项。<br>
-        <img src="../images/QSG170/5.4-1.png">
+        <img src="images/5.4-1.png">
     </li>
     <li>
         在同一 Preferences 窗口（<strong>Simplicity Studio > Preferences</strong>）中，在 <strong>Network Analyzer > Decoding > Security Keys</strong> 下，验证 Thread 网络使用的正确 Network Master Key 已添加到已知密钥列表中。
     </li>
     <li>
         在 Debug Adapters 视图中，右键在 Thread 网络上运行的设备并开始采集。<br>
-        <img src="../images/QSG170/5.4-2.png">
+        <img src="images/5.4-2.png">
     </li>
 </ol>
 
 您现在应该能够看到如下所示的 Thread 流量。点击分组以在 Event Detail 视图（右侧）中查看有关其内容的更多详细信息。
 
-![](../images/QSG170/5.4-3.png)
+![](images/5.4-3.png)

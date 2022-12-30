@@ -1,0 +1,6 @@
+<svg id="icon-thread-blue" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <g id="Group_12791" data-name="Group 12791">
+    <path id="Path_11349" data-name="Path 11349" d="M24,0A24,24,0,1,1,0,24,24,24,0,0,1,24,0Z" fill="#0F62FE"/>
+    <path id="Path_11561" data-name="Path 11561" d="M20.865,31.5H17.619V15.28l-4.876,0a2.629,2.629,0,0,0,0,5.258v3.246a5.875,5.875,0,1,1,0-11.75h4.876V10.39a4.89,4.89,0,1,1,4.89,4.89H20.865Zm0-19.466h1.644a1.644,1.644,0,1,0-1.644-1.644Z" transform="translate(6.633 4.999)" fill="#fff"/>
+  </g>
+</svg>
