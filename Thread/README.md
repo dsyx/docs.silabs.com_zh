@@ -68,7 +68,7 @@ OpenThread 是在 BSD 3-Clause 许可证下发布的。可参阅 LICENSE 文件�
 * [x] [AN1350: Single-Band Proprietary Sub-GHz Support with OpenThread](AN1350/Single-Band%20Proprietary%20Sub-GHz%20Support%20with%20OpenThread.md) —— 描述了如何使用 Silicon Labs OpenThread SDK、Simplicity Studio 5 和一个兼容的主板配置 OpenThread 应用，使其在 proprietary sub-GHz 频段上运行。它还提供了该特性支持的 proprietary radio PHY 的详细信息。
 * [x] [AN1264: Using OpenThread with FreeRTOS](AN1264/Using%20Open%20Thread%20with%20FreeRTOS.md) —— 描述了如何用 FreeRTOS 构建 OpenThread 应用程序。
 * [x] [AN1372: Configuring OpenThread Applications for Thread 1.3](AN1372/Configuring%20OpenThread%20Applications%20for%20Thread%201.3.md) —— 提供了配置 OpenThread SoC 和 Border Router 应用程序以使用 Thread 1.3 特性的说明。
-* [ ] [UG162: Simplicity Commander Reference Guide]() —— 描述了如何以及何时使用 Simplicity Commander 的命令行接口。
+* [x] [UG162: Simplicity Commander Reference Guide](../Others/UG162/Simplicity%20Commander%20Reference%20Guide.md) —— 描述了如何以及何时使用 Simplicity Commander 的命令行接口。
 
 ### 多协议
 
