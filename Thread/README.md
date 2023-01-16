@@ -72,7 +72,7 @@ OpenThread 是在 BSD 3-Clause 许可证下发布的。可参阅 LICENSE 文件�
 
 ### 多协议
 
-* [ ] [UG103.16: Multiprotocol Fundamentals]() —— 介绍了四种多协议模式，讨论了为多协议实现选择协议时的考虑因素，并检阅了动态多协议解决方案的必要组件：Radio Scheduler。
+* [x] [UG103.16: Multiprotocol Fundamentals](../Others/UG103.16/Multiprotocol%20Fundamentals.md) —— 介绍了四种多协议模式，讨论了为多协议实现选择协议时的考虑因素，并检阅了动态多协议解决方案的必要组件：Radio Scheduler。
 * [ ] [AN1265: Dynamic Multiprotocol Development with Bluetooth and OpenThread in GSDK v3.x]() —— 提供了使用 Bluetooth 和 OpenThread 开发动态多协议应用的细节。
 * [ ] [UG305: Dynamic Multiprotocol User's Guide]() —— 描述了如何实现动态多协议解决方案。
 * [ ] [AN1333: Running Zigbee, OpenThread, and Bluetooth Concurrently on a Linux Host with a Multiprotocol Co-Processor]() —— 描述了如何在 Linux 主机处理器上运行 Zigbee EmberZNet、OpenThread 和 Bluetooth 网络栈的任何组合，与支持多协议和 multi-PAN 的单个 EFR32 RCP 进行交互，以及如何在 EFR32 上作为 Zigbee NCP 与 OpenThread RCP 一起运行。

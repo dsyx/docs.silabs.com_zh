@@ -11,6 +11,8 @@
   - [3.2 Concurrent Multiprotocol Example](#32-concurrent-multiprotocol-example)
 - [4. Radio Scheduler](#4-radio-scheduler)
 
+---
+
 本文档讨论了在单个芯片上使用多个协议的方法。它讨论了为多协议实现选择协议时的注意事项。还描述了 Silicon Labs Radio Scheduler 的基础知识，这是动态多协议解决方案的必需组件。
 
 # 1. Introduction
@@ -127,7 +129,7 @@ Zigbee 和 Thread 是用于并发式多协议实现的合适协议的一个示�
 
 Silicon Labs 无线电调度器是 RAIL 库的一部分。它在无线电硬件之上和 RAIL API 之下运行，如下图所示。
 
-![](../images/UG103.16/4-1.png)
+![](images/4-1.png)
 
 根据情况，每个协议中的不同无线电事件可能或多或少地重要，或者或多或少地对时间敏感。无线电调度器在决定如何裁决时可以考虑这些因素。
 
