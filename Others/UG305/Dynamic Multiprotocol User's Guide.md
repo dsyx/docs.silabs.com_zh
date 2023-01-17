@@ -1,4 +1,4 @@
-# UG305: Dynamic Multiprotocol User's Guide (Rev. 0.9) <!-- omit in toc -->
+# UG305: Dynamic Multiprotocol User’s Guide (Rev. 1.1) <!-- omit in toc -->
 
 - [1. Introduction](#1-introduction)
   - [1.1 Terminology](#11-terminology)
@@ -63,17 +63,27 @@
   - [7.2 Example of Bluetooth Scheduler Operation](#72-example-of-bluetooth-scheduler-operation)
   - [7.3 Modifying Priorities](#73-modifying-priorities)
 
+---
+
 本用户指南提供了有关使用 Silicon Labs 的动态多协议（Dynamic Multiprotocol）解决方案实现应用程序的详细信息。动态多协议对无线电进行时间分片，并快速更改配置，以使不同的无线协议能够同时可靠地运行。
 
 # 1. Introduction
 
 本文档介绍了 Silicon Labs 软件如何设计成可在单个无线芯片上被多种协议使用。动态多协议对无线电进行时间分片，并快速更改配置，以使不同的无线协议能够同时可靠地运行。
 
+注意：本文档中的 Zigbee 特定信息适用于版本 6.10.x 及更低版本。
+
 以下应用笔记中提供了有关特定动态多协议实现的详细信息：
 
-* *AN1133: Dynamic Multiprotocol Development with Bluetooth and Zigbee*
-* *AN1134: Dynamic Multiprotocol Development with Bluetooth and Proprietary Protocols on RAIL*
-* *AN1209: Dynamic Multiprotocol Development with Bluetooth and Connect*
+[*AN1133: Dynamic Multiprotocol Development with Bluetooth and Zigbee EmberZNet SDK 6.x and Lower*](https://www.silabs.com/documents/public/application-notes/an1133-dynamic-multiprotocol-bluetooth-zigbee.pdf)
+
+[*AN1134: Dynamic Multiprotocol Development with Bluetooth and Proprietary Protocols on RAIL in GSDK v2.x*](https://www.silabs.com/documents/public/application-notes/an1134-bluetooth-rail-dynamic-multiprotocol.pdf)
+
+[*AN1269: Dynamic Multiprotocol Development with Bluetooth® and Proprietary Protocols on RAIL in GSDK v3.x*](https://www.silabs.com/documents/public/application-notes/an1269-bluetooth-rail-dynamic-multiprotocol-gsdk-v3x.pdf)
+
+[*AN1209: Dynamic Multiprotocol Development with Bluetooth and Connect*](https://www.silabs.com/documents/public/application-notes/an1209-dynamic-multiprotocol-connect-bluetooth.pdf)
+
+[*AN1265: Dynamic Multiprotocol Development with Bluetooth® and OpenThread in GSDK v3.x*](https://www.silabs.com/documents/public/application-notes/an1265-openthread-bluetooth-dynamic-multiprotocol-gsdk-v3x.pdf)
 
 ## 1.1 Terminology
 
@@ -95,7 +105,12 @@
 
 动态多协议利用 EFR32 硬件和 RAIL 软件作为其构建块。然后，在这些基础层之上构建 Zigbee、Bluetooth 和/或任何其他基于标准或专有的协议，可以使用 Micrium 来管理不同协议之间的代码执行。下图说明了软件模块的一般结构。
 
-![Figure 1.1. General Dynamic Multiprotocol Software Architecture](../images/UG305/Figure%201.1.%20General%20Dynamic%20Multiprotocol%20Software%20Architecture.png)
+<figure>
+  <img src="images/Figure%201.1.%20General%20Dynamic%20Multiprotocol%20Software%20Architecture.png"
+       alt="Figure 1.1. General Dynamic Multiprotocol Software Architecture"
+       style="display:block; margin: auto;">
+  <figcaption style="white-space: nowrap; text-align: center;">Figure 1.1. General Dynamic Multiprotocol Software Architecture</figcaption>
+</figure>
 
 从 v2.0 起，RAIL 需要将无线电配置句柄传递给 RAIL API 调用。此配置描述了协议栈使用的各种 PHY 参数。
 
@@ -107,7 +122,7 @@ RAIL 核心根据无线电调度器的指令配置 EFR32 硬件。
 
 ## 1.3 Single Firmware Image
 
-Dynamic Multiprotocol 使软件开发者可以生成单个整体的二进制文件，并将其加载到 EFR32 上。通过升级整个二进制文件来完成软件更新。这可以通过使用 Gecko Bootloader 来完成，有关详细信息，请参阅 *UG266: Silicon Labs Gecko Bootloader User's Guide* 。
+Dynamic Multiprotocol 使软件开发者可以生成单个整体的二进制文件，并将其加载到 EFR32 上。通过升级整个二进制文件来完成软件更新。这可以通过使用 Gecko Bootloader 来完成，有关详细信息，请参阅 *UG266: Silicon Labs Gecko Bootloader User’s Guide for GSDK 3.2 and Lower* 和 *UG489: Silicon LabsGecko Bootloader User’s Guide for GSDK 4.0 and Higher*。
 
 ## 1.4 Independent Stack Operation
 
@@ -137,7 +152,7 @@ Dynamic Multiprotocol 使软件开发者可以生成单个整体的二进制文�
 
 每个操作具有以下参数：
 
-<table class="nowrap-table-th-all nowrap-table-td-1">
+<table>
 <thead>
   <tr>
     <th>Parameter</th>
@@ -158,7 +173,7 @@ Dynamic Multiprotocol 使软件开发者可以生成单个整体的二进制文�
     <td>An amount of time that the event can be delayed beyond its start time and still be acceptable to the stack. This may be 0, in which case the event cannot be slipped.</td>
   </tr>
   <tr>
-    <td>Transaction Time</td>
+    <td style="white-space: nowrap;">Transaction Time</td>
     <td>The approximate amount of time that it takes to complete the transaction. Transmit events usually have a much more well-defined transaction time, while receive events are often unknown. This is used to help the radio scheduler determine whether an event can be run.</td>
   </tr>
 </tbody>
@@ -203,7 +218,7 @@ Dynamic Multiprotocol 使软件开发者可以生成单个整体的二进制文�
 
 ## 2.5 Yield
 
-一旦一系列无线电操作被有效地运行，协议栈可以继续添加操作来扩展这最初的操作，直到协议栈不再需要进行特定的消息交换为止。协议栈必须自发地让出，除非它正在执行一个后台接收。如果协议栈未让出，则它将继续扩展其无线电操作，并且较低优先级的无线电操作将触发一个失败以返回到请求该无线电操作的相应协议栈。较高优先级的操作不能中断当前正在运行的较低优先级的无线电操作（其未让出）。 请参见 [6.1 Examples with Background Receive, Yield Radio and State Transition](#6-1-Examples-with-Background-Receive-Yield-Radio-and-State-Transition) ，以了解有必要明确地让出无线电的情况的示例。
+一旦一系列无线电操作被有效地运行，协议栈可以继续添加操作来扩展这最初的操作，直到协议栈不再需要进行特定的消息交换为止。协议栈必须自发地让出，除非它正在执行一个后台接收。如果协议栈未让出，则它将继续扩展其无线电操作，并且较低优先级的无线电操作将触发一个失败以返回到请求该无线电操作的相应协议栈。较高优先级的操作不能中断当前正在运行的较低优先级的无线电操作（其未让出）。请参见 [6.1 Examples with Background Receive, Yield Radio and State Transition](#6-1-Examples-with-Background-Receive-Yield-Radio-and-State-Transition) ，以了解有必要明确地让出无线电的情况的示例。
 
 ## 2.6 Interrupting a Radio Operation
 
@@ -226,11 +241,11 @@ Dynamic Multiprotocol 使软件开发者可以生成单个整体的二进制文�
 
 这提供了判定不同无线电操作的优先级的基本示例。
 
-![](../images/UG305/3.1-1.png)
+![](images/3.1-1.png)
 
-Zigbee 协议栈决定需要发送一个数据包。它可能将其作为一个 on-demand 事件进行，这意味着协议栈决定 **立即** 发送一个数据包，而无需提前通知调度器。这与 Bluetooth LE 的操作形成了鲜明的对比，Bluetooth LE 的操作安排是适度已知的。调度器估计，将来有可能执行 Zigbee TX 1 无线电操作，并且仍为更高优先级的 Bluetooth LE 接收事件提供服务。因此，调度器允许发生传输事件。Zigbee 协议栈执行此传输操作的所有部分（等待 MAC ack），然后自发地让出。Zigbee 传输无线电操作的估计事务处理时间不包括重试。
+Zigbee 协议栈决定需要发送一个数据包。它可能将其作为一个 on-demand 事件进行，这意味着协议栈决定 *立即* 发送一个数据包，而无需提前通知调度器。这与 Bluetooth LE 的操作形成了鲜明的对比，Bluetooth LE 的操作安排是适度已知的。调度器估计，将来有可能执行 Zigbee TX 1 无线电操作，并且仍为更高优先级的 Bluetooth LE 接收事件提供服务。因此，调度器允许发生传输事件。Zigbee 协议栈执行此传输操作的所有部分（等待 MAC ack），然后自发地让出。Zigbee 传输无线电操作的估计事务处理时间不包括重试。
 
-在此示例中，Bluetooth LE **已经** 被安排在将来接收，并且 Zigbee 协议栈想要进行传输。对于第一个 Zigbee TX 1 无线电操作，在 Bluetooth LE RX 1 无线电操作之前有足够的时间，因此调度器允许协议栈执行该操作。稍后，当 Zigbee 协议栈尝试安排 Zigbee TX 2 时，调度器会确定在高优先级的 Bluetooth LE RX 2 事件之前没有足够的时间。但是，Zigbee 协议栈已表明此操作可能会 slip 其起始时间。无线电调度器确定在给定的 Bluetooth LE 无线电操作预期持续时间之后，Zigbee 操作可以在该事件之后开始，并且仍在 Zigbee 协议栈所指示的 slip time 内。
+在此示例中，Bluetooth LE *已经* 被安排在将来接收，并且 Zigbee 协议栈想要进行传输。对于第一个 Zigbee TX 1 无线电操作，在 Bluetooth LE RX 1 无线电操作之前有足够的时间，因此调度器允许协议栈执行该操作。稍后，当 Zigbee 协议栈尝试安排 Zigbee TX 2 时，调度器会确定在高优先级的 Bluetooth LE RX 2 事件之前没有足够的时间。但是，Zigbee 协议栈已表明此操作可能会 slip 其起始时间。无线电调度器确定在给定的 Bluetooth LE 无线电操作预期持续时间之后，Zigbee 操作可以在该事件之后开始，并且仍在 Zigbee 协议栈所指示的 slip time 内。
 
 如果一切都按预期进行，则 Zigbee 传输操作将发生首次尝试（不会因调度而导致任何失败）。
 
@@ -238,7 +253,7 @@ Zigbee 协议栈决定需要发送一个数据包。它可能将其作为一个 
 
 此示例说明了较高优先级的操作会中断较低优先级的操作。
 
-![](../images/UG305/3.2-1.png)
+![](images/3.2-1.png)
 
 本示例以与上一个示例相同的方式开始。Zigbee 和 Bluetooth LE 都已安排了无线电操作，没有任何冲突。
 
@@ -250,7 +265,7 @@ Zigbee 协议栈决定需要发送一个数据包。它可能将其作为一个 
 
 此示例展示了当一个较高优先级的操作花费的时间比最初预期的时间长并且导致一个较低优先级的操作错过它的机会时会发生什么。
 
-![](../images/UG305/3.3-1.png)
+![](images/3.3-1.png)
 
 在这种情况下，Bluetooth LE 有一个正在进行的预定接收。Zigbee 决定发送一个数据包，但现在无法进行。调度器假定 Bluetooth LE 事件将在 Zigbee 事件的 slip time 结束之前完成并接受此操作。然而，由于设备之间发送了额外的数据包，导致 Bluetooth LE 事件的时间延长了。Bluetooth LE 操作具有优先权，因此 Zigbee 操作的 slip 最终会被用完。一个错误讲返回到协议栈。Zigbee 决定重新传输该数据包。同样，Zigbee 协议栈指示该操作应从现在开始，但可以 slip 到将来。调度器处于更改无线电配置的过程中，因此它无法立即开始操作。取而代之的是，它使无线电操作的开始时间 slip 了少许，然后执行操作。
 
@@ -258,7 +273,7 @@ Zigbee 协议栈决定需要发送一个数据包。它可能将其作为一个 
 
 在此示例中，无线电调度器在充当 Bluetooth LE 从机（slave）的节点上运行，并且该节点具有到不同主机节点的多个连接。它还有一个定期发送的广告信标（advertising beacon）。下图展示了这些事件实际上是紧接着发生的且没有足够的时间切换回 Zigbee 无线电配置的情况。因此，它将创建一个周期，在此期间 Zigbee 协议栈无法传输（即使使用 slip time）。
 
-![](../images/UG305/3.4-1.png)
+![](images/3.4-1.png)
 
 Zigbee 要求调度器安排一个传输无线电操作。即使调度器知道该事件将由于优先级而失败，但它仍接受该安排的事件。这样做有两个原因。第一，情况可能会改变，并且事件可以被执行。第二，位于无线电调度器之上的协议栈可能会尝试重试该操作。如果安排失败的结果立即返回，则协议栈重试的尝试将不太可能成功，因为还没有经历任何时间。相反，通过将事件入队并在 slip time 到期后返回失败，重试（具有自己的 slip time）将有更好的成功机会，因为即将进行的无线电操作将会有所不同。
 
@@ -266,7 +281,7 @@ Zigbee 要求调度器安排一个传输无线电操作。即使调度器知道�
 
 此示例说明了当 Bluetooth LE 处于活动状态并且一个低优先级操作将接收数据时发生的情况。
 
-![](../images/UG305/3.5-1.png)
+![](images/3.5-1.png)
 
 在第一种情况下，当发送一个 IEEE 802.15.4 消息且 Bluetooth LE 协议栈正利用无线电进行一个主动接收时，Zigbee 协议栈将不会在线接收到消息。然而，该消息的 Zigbee 发送方将在大多数情况下重试，并且这存在退避和其他时序改动，不会与另一个不太可能发生冲突的更高优先级的安排的 Bluetooth 接收事件发生冲突。Zigbee 消息将成功接收。
 
@@ -284,7 +299,12 @@ Zigbee 要求调度器安排一个传输无线电操作。即使调度器知道�
 
 下图说明了用于 Zigbee 和 Bluetooth 的 Micrium OS 任务切换：
 
-![Figure 4.1. Micrium OS Task Switching](../images/UG305/Figure%204.1.%20Micrium%20OS%20Task%20Switching.png)
+<figure>
+  <img src="images/Figure%204.1.%20Micrium%20OS%20Task%20Switching.png"
+       alt="Figure 4.1. Micrium OS Task Switching"
+       style="display:block; margin: auto;">
+  <figcaption style="white-space: nowrap; text-align: center;">Figure 4.1. Micrium OS Task Switching</figcaption>
+</figure>
 
 一个 Zigbee/Bluetooth 动态多协议应用程序需要若干任务才能运行：
 
@@ -299,7 +319,8 @@ Zigbee 要求调度器安排一个传输无线电操作。即使调度器知道�
 
 在描述任务之前，重要的是要了解任务如何相互通信。该应用程序中的任务通过使用多个标志（flag）来相互同步。下表总结了这些标志：
 
-<table class="nowrap-table" title="Table 4.1. Flags in v3.x" id="Table-4.1">
+<table id="Table-4.1" style="margin: auto;">
+<caption style="white-space: nowrap;">Table 4.1. Flags in v3.x</caption>
 <thead>
   <tr>
     <th>FLAG</th>
@@ -348,7 +369,8 @@ Zigbee 要求调度器安排一个传输无线电操作。即使调度器知道�
 </tbody>
 </table>
 
-<table class="nowrap-table" title="Table 4.2. Flags in v2.x">
+<table style="margin: auto;">
+<caption style="white-space: nowrap;">Table 4.2. Flags in v2.x</caption>
 <thead>
   <tr>
     <th>FLAG</th>
@@ -401,7 +423,7 @@ Zigbee 要求调度器安排一个传输无线电操作。即使调度器知道�
 
 除了这些标志之外，gecko 命令处理程序还使用互斥量使其具有 thread-safe。这样就可以从多任务中调用 BGAPI 命令。
 
-![](../images/UG305/4.1.1-1.png)
+![](images/4.1.1-1.png)
 
 ### 4.1.2 Task Descriptions
 
@@ -409,7 +431,7 @@ Zigbee 要求调度器安排一个传输无线电操作。即使调度器知道�
 
 Application/Zigbee Stack task 负责在启动时设置所有其他任务，包括 Bluetooth Host task 和 Bluetooth Link Layer task。Zigbee 具有大量的 API 集，并且这些 API 并非 thread-safe。因此，所有调用 Zigbee stack API 的代码都应从 Application/Zigbee Stack task 中执行。如果应用程序需要从 Application/Zigbee Stack task 以外的某个任务中调用某些 Zigbee stack API，则建议您从 non-Zigbee Stack task 中安排一个自定义事件。在自定义事件的相应事件处理函数中，可以使用 Zigbee stack API，因为该事件处理程序将从 Zigbee Stack Task 上下文中调用。Bluetooth 具有一个通过 BGAPI RTOS Adaption Layer 进行序列化的相对较少的 API 集。因此，从 Application/Zigbee Stack task 以外的任务中调用任何 Bluetooth API 是安全的。
 
-![](../images/UG305/4.1.2.1-1.png)
+![](images/4.1.2.1-1.png)
 
 #### 4.1.2.2 Bluetooth Link Layer Task
 
@@ -431,7 +453,12 @@ Link layer task 的目的是更新上层链路层（upper link layer）。v3.x �
 
 下图说明了用于 Connect 和 Bluetooth 的 Micrium OS 任务切换：
 
-![Figure 4.2. Micrium OS Task Switching](../images/UG305/Figure%204.2.%20Micrium%20OS%20Task%20Switching.png)
+<figure>
+  <img src="images/Figure%204.2.%20Micrium%20OS%20Task%20Switching.png"
+       alt="Figure 4.2. Micrium OS Task Switching"
+       style="display:block; margin: auto;">
+  <figcaption style="white-space: nowrap; text-align: center;">Figure 4.2. Micrium OS Task Switching</figcaption>
+</figure>
 
 一个 Connect/Bluetooth 动态多协议应用程序需要执行以下任务才能运行：
 
@@ -449,7 +476,8 @@ Link layer task 的目的是更新上层链路层（upper link layer）。v3.x �
 
 在描述任务之前，重要的是要了解任务如何相互通信。该应用程序中的任务通过使用多个标志（flag）来相互同步。下表总结了这些标志：
 
-<table class="nowrap-table" title="Table 4.3. Flags in v3.x" id="Table-4.3">
+<table id="Table-4.3" style="margin: auto;">
+<caption style="white-space: nowrap;">Table 4.3. Flags in v3.x</caption>
 <thead>
   <tr>
     <th>FLAG</th>
@@ -516,7 +544,8 @@ Link layer task 的目的是更新上层链路层（upper link layer）。v3.x �
 </tbody>
 </table>
 
-<table class="nowrap-table" title="Table 4.4. Flags in v2.x">
+<table style="margin: auto;">
+<caption style="white-space: nowrap;">Table 4.4. Flags in v2.x</caption>
 <thead>
   <tr>
     <th>FLAG</th>
@@ -585,7 +614,7 @@ Link layer task 的目的是更新上层链路层（upper link layer）。v3.x �
 
 下图说明了如何在同步任务中使用这些标志。标志命名适用于 GSDKv2.x。对于 v3.x，方法是相同的，只是名称有所不同，如 [Table 4.3. Flags in v3.x](#Table-4.3) 所示。
 
-![](../images/UG305/4.2.1-1.png)
+![](images/4.2.1-1.png)
 
 除了这些标志之外，Connect 和 Bluetooth 命令处理程序还使用互斥量使其 thread-safe。这样就可以从多任务中调用 BGAPI 命令和 Connect Stack API。
 
@@ -597,7 +626,7 @@ Link layer task 的目的是更新上层链路层（upper link layer）。v3.x �
 
 任务创建和初始化在 v3.x 中的处理方式有所不同，如下流程图所示。
 
-![](../images/UG305/4.2.2.1-1.png)
+![](images/4.2.2.1-1.png)
 
 #### 4.2.2.2 Connect Stack Task
 
@@ -605,7 +634,7 @@ Link layer task 的目的是更新上层链路层（upper link layer）。v3.x �
 
 Connect Stack task 还分派 IPC 回调消息到 Application Framework task。为此，在触发协议栈回调时，会将相应的 IPC 消息放入 OS 队列中，并设置 `FLAG_IPC_CALLBACK_PENDING` 标志。一旦 Connect Stack tack 让出，Application Framework tack 将能够运行和处理队列中可用的任何回调消息。
 
-![](../images/UG305/4.2.2.2-1.png)
+![](images/4.2.2.2-1.png)
 
 #### 4.2.2.3 Application Framework/Customer Application Task
 
@@ -645,7 +674,7 @@ Bluetooth 命令可以从多个任务发送到协议栈。对这些命令的响�
 
 下图说明了 Bluetooth host task 的运行。
 
-![](../images/UG305/4.3.2-1.png)
+![](images/4.3.2-1.png)
 
 1. 在任务启动时，设置 `SL_BT_RTOS_EVENT_FLAG_STACK` 以指示协议栈需要更新，并且设置 `SL_BT_RTOS_EVENT_FLAG_EVT_HANDLED` 标志以指示当前未处理任何事件。
 2. 接下来，如果设置了 `SL_BT_RTOS_EVENT_FLAG_CMD_WAITING` 标志，则调用 `sli_bt_cmd_handler_delegate()` 处理命令。
@@ -672,7 +701,7 @@ Bluetooth 命令可以从多个任务发送到协议栈。对这些命令的响�
 
 下图说明了 Bluetooth host task 的运行。
 
-![](../images/UG305/4.4.2-1.png)
+![](images/4.4.2-1.png)
 
 1. 在任务启动时，设置 `BLUETOOTH_EVENT_FLAG_STACK` 以指示协议栈需要更新，并且设置 `BLUETOOTH_EVENT_FLAG_EVT_HANDLED` 标志以指示当前未处理任何事件。
 2. 接下来，如果设置了 `BLUETOOTH_EVENT_FLAG_CMD_WAITING` 标志，则调用 `gecko_handle_command()` 处理命令。
@@ -696,7 +725,7 @@ Bluetooth 命令可以从多个任务发送到协议栈。对这些命令的响�
 
 802.15.4 协议当前具有三个 RAIL 优先级。
 
-<table class="nowrap-table">
+<table style="white-space: nowrap;">
 <thead>
   <tr>
     <th>No.</th>
@@ -739,7 +768,7 @@ Background RX 将使无线电处于接收状态以准备接收异步消息。如
 
 这些默认 RAIL 优先级使得在一个 802.15.4 protocol-Bluetooth 多协议应用程序中，默认情况下 Bluetooth 流量始终会优先于 802.15.4 协议流量。对于许多应用来说，这是一个不错的选择，因为与 802.15.4 协议不同，Bluetooth 流量具有严格的时序要求。但是，如果 Bluetooth 流量负载很高（例如，使用非常小的连接间隔发送大量数据），那么 802.15.4 协议流量可能会从访问无线电中完全地阻塞，因为它的优先级较低并且 Bluetooth 流量所留下的可用无线电时间的窗口（windows）太小。
 
-> 注意：以下信息当前仅适用于 EmberZNet Zigbee stack。Silicon Labs Connect 尚未具有更改优先级所需的 API。
+**注意**：以下信息当前仅适用于 EmberZNet Zigbee stack。Silicon Labs Connect 尚未具有更改优先级所需的 API。
 
 如果您正在开发一个 802.15.4-based 动态多协议应用程序，并且在 Bluetooth 流量高负载的情况下该流量（802.15.4）的成功非常重要，则可以使用以下 API 来调整默认优先级，如下表所示：
 
@@ -747,7 +776,7 @@ Background RX 将使无线电处于接收状态以准备接收异步消息。如
 EmberStatus emberRadioSetSchedulerPriorities(const EmberMultiprotocolPriorities *priorities)
 ```
 
-<table class="nowrap-table">
+<table style="white-space: nowrap;">
 <thead>
   <tr>
     <th>No.</th>
@@ -805,7 +834,12 @@ RAIL 多协议优先级系统的基本原理非常简单：具有较高优先级
 
 第一个示例检查具有单个协议的无线电行为（即，对所有无线电函数调用都使用相同的 `RAIL_Handle_t` ）。无线电首先调用 `RAIL_StartRx()` 以从 RX 开始，然后调用 `RAIL_StartTx()` 进入到一个具有更高优先级的 TX。请务必注意，在完成传输之后，无线电会转换到 `RAIL_SetTxTransitions()` 所指定的状态，并且会无限期地保持与 TX 相同的优先级和信道状态，直到调用 `RAIL_YieldRadio()` 为止。之后，无线电以初始指定的优先级和信道返回到 RX。
 
-![Figure 6.1. State Transitions with Calls to RAIL_StartTx(), RAIL_StartRx(), RAIL_YieldRadio() with a Single Protocol](../images/UG305/Figure%206.1.%20State%20Transitions%20with%20Calls%20to%20RAIL_StartTx(),%20RAIL_StartRx(),%20RAIL_YieldRadio()%20with%20a%20Single%20Protocol.png)
+<figure>
+  <img src="images/Figure%206.1.%20State%20Transitions%20with%20Calls%20to%20RAIL_StartTx(),%20RAIL_StartRx(),%20RAIL_YieldRadio()%20with%20a%20Single%20Protocol.png"
+       alt="Figure 6.1. State Transitions with Calls to RAIL_StartTx(), RAIL_StartRx(), RAIL_YieldRadio() with a Single Protocol"
+       style="display:block; margin: auto;">
+  <figcaption style="white-space: nowrap; text-align: center;">Figure 6.1. State Transitions with Calls to RAIL_StartTx(), RAIL_StartRx(), RAIL_YieldRadio() with a Single Protocol</figcaption>
+</figure>
 
 由于 ACK'ing，很大程度上需要主动让出无线电，因此有必要使用 `RAIL_YieldRadio()` API。设计理念是，由于 TX 和接收到的 ACK 都被视为同一事务的一部分，因此，如果节点发送并期望一个 ACK，则它应该既能够为 ACK 而转换到 RX，又能够继续为 ACK 而侦听，以与原始 TX 的操作作为相同操作的一部分（因此优先级相同）。但是，一般而言 RAIL 本身无法知道是否需要 ACK。这可能取决于其他因素（如数据包内容或其他应用程序逻辑），所以无法简单地通过检查是否已使用 `RAIL_ConfigAutoAck()` 配置了 ACK'ing 来确定。因此，有关何时完成无线电事务的决定权留给了 application/stack。
 
@@ -815,7 +849,12 @@ RAIL 多协议优先级系统的基本原理非常简单：具有较高优先级
 
 该场景与关于 TX 之后的状态转换的第一个场景相似，但是引入了另一种协议。
 
-![Figure 6.2. State Transitions with Calls to RAIL_StartTx(), RAIL_StartRx(), RAIL_YieldRadio() With Two Protocols](../images/UG305/Figure%206.2.%20State%20Transitions%20with%20Calls%20to%20RAIL_StartTx(),%20RAIL_StartRx(),%20RAIL_YieldRadio()%20With%20Two%20Protocols.png)
+<figure>
+  <img src="images/Figure%206.2.%20State%20Transitions%20with%20Calls%20to%20RAIL_StartTx(),%20RAIL_StartRx(),%20RAIL_YieldRadio()%20With%20Two%20Protocols.png"
+       alt="Figure 6.2. State Transitions with Calls to RAIL_StartTx(), RAIL_StartRx(), RAIL_YieldRadio() With Two Protocols"
+       style="display:block; margin: auto;">
+  <figcaption style="white-space: nowrap; text-align: center;">Figure 6.2. State Transitions with Calls to RAIL_StartTx(), RAIL_StartRx(), RAIL_YieldRadio() With Two Protocols</figcaption>
+</figure>
 
 在这种情况下，请务必注意，在 TX 事务期间可以随时调用 `RAIL_StartRx()` 。只要其优先级小于或等于 TX 的优先级，在应用程序在协议 A 上调用 `RAIL_YieldRadio()` 之前，RX 才会生效。在 TX 期间调用 `RAIL_StartRx()` 时，RX 只是被加入到要处理的事件队列中。
 
@@ -825,7 +864,12 @@ RAIL 多协议优先级系统的基本原理非常简单：具有较高优先级
 
 最后的方案与前一个方案几乎相同，除了在协议 B 上对 `RAIL_StartRx()` 的调用比在协议 A 上对 `RAIL_StartTx()` 的调用具有更高的优先级。
 
-![Figure 6.3. Example of State Transitions with Calls to RAIL_StartTx(), RAIL_StartRx(), RAIL_YieldRadio() with Two Protocols and Different Priorities](../images/UG305/Figure%206.3.png)
+<figure>
+  <img src="images/Figure%206.3.%20Example%20of%20State%20Transitions%20with%20Calls%20to%20RAIL_StartTx(),%20RAIL_StartRx(),%20RAIL_YieldRadio()%20with%20Two%20Protocols%20and%20Different%20Priorities.png"
+       alt="Figure 6.3. Example of State Transitions with Calls to RAIL_StartTx(), RAIL_StartRx(), RAIL_YieldRadio() with Two Protocols and Different Priorities"
+       style="display:block; margin: auto;">
+  <figcaption style="white-space: nowrap; text-align: center;">Figure 6.3. Example of State Transitions with Calls to RAIL_StartTx(), RAIL_StartRx(), RAIL_YieldRadio() with Two Protocols and Different Priorities</figcaption>
+</figure>
 
 在这种情况下，由于第二个 `RAIL_StartRx()` 的优先级高于 `RAIL_StartTx()` ，因此不再需要一个 `RAIL_YieldRadio()` 调用。因为第二个 `RAIL_StartRx()` 的优先级更高，所以它会抢占 `RAIL_StartTx()` 事件，从而控制无线电并从状态中移除 TX 事件。与前一个示例一样，在协议 B 上的 RX 期间的任何时间，都可以调用 `RAIL_Idle()` 返回到协议 A 上的 RX。
 
@@ -841,13 +885,19 @@ RAIL 多协议优先级系统的基本原理非常简单：具有较高优先级
 
 与针对不同操作类型而使用静态定义优先级的 Zigbee 相比，Bluetooth 使用一个范围和偏移量方法将所有任务分配给一个优先级谱的给定区域。
 
-![Figure 7.1. Mapping of Bluetooth Priority Range to RAIL Priority Range](../images/UG305/Figure%207.1.%20Mapping%20of%20Bluetooth%20Priority%20Range%20to%20RAIL%20Priority%20Range.png)
+<figure>
+  <img src="images/Figure%207.1.%20Mapping%20of%20Bluetooth%20Priority%20Range%20to%20RAIL%20Priority%20Range.png"
+       alt="Figure 7.1. Mapping of Bluetooth Priority Range to RAIL Priority Range"
+       style="display:block; margin: auto;">
+  <figcaption style="white-space: nowrap; text-align: center;">Figure 7.1. Mapping of Bluetooth Priority Range to RAIL Priority Range</figcaption>
+</figure>
 
 在此示例中，Bluetooth 优先级范围（从 0 到 255）被映射到共享 RAIL 优先级空间的一个有限部分。
 
 与 Zigbee 不同，Bluetooth 具有更严格的时序要求，其中缺少一个给定的槽（slot）可能会导致连接终止。Bluetooth 还具有一系列不同的任务，例如（可能有多个）连接、广告和扫描。
 
-<table class="nowrap-table" title="Table 7.1. Different priorities in Bluetooth">
+<table style="margin: auto;">
+<caption style="white-space: nowrap;">Table 7.1. Different priorities in Bluetooth</caption>
 <thead>
   <tr>
     <th>No.</th>
@@ -891,7 +941,12 @@ RAIL 多协议优先级系统的基本原理非常简单：具有较高优先级
 3. Maximum time
 4. Priority
 
-![Figure 7.2. Bluetooth Task](../images/UG305/Figure%207.2.%20Bluetooth%20Task.png)
+<figure>
+  <img src="images/Figure%207.2.%20Bluetooth%20Task.png"
+       alt="Figure 7.2. Bluetooth Task"
+       style="display:block; margin: auto;">
+  <figcaption style="white-space: nowrap; text-align: center;">Figure 7.2. Bluetooth Task</figcaption>
+</figure>
 
 如果开始时间移动了，则总运行时间将减少，也就是说，松弛时间（slack）将减少。优先级也可以动态调整。
 
@@ -921,27 +976,57 @@ Bluetooth 调度器会随着连接与监视（supervision）超时之间的距�
 
 此示例说明了 Bluetooth 调度器将如何调度三个连接任务和一个广告任务，每个任务具有不同的优先级。在下图中，灰色部分表示任务所需的最小运行时间，蓝色部分表示任务可以使用的最大运行时间，如果可以灵活使用，则可以移动任务的区域。下图展示了初始设置。
 
-![Figure 7.3. Task Scheduling Example: Setup](../images/UG305/Figure%207.3.%20Task%20Scheduling%20Example%20-%20Setup.png)
+<figure>
+  <img src="images/Figure%207.3.%20Task%20Scheduling%20Example%20-%20Setup.png"
+       alt="Figure 7.3. Task Scheduling Example: Setup"
+       style="display:block; margin: auto;">
+  <figcaption style="white-space: nowrap; text-align: center;">Figure 7.3. Task Scheduling Example: Setup</figcaption>
+</figure>
 
 如下所示，Conn1 是第一个运行的任务，因为它与任何更高优先级的任务都不重叠。
 
-![Figure 7.4. Task Scheduling Example: 1st Step](../images/UG305/Figure%207.4.%20Task%20Scheduling%20Example%20-%201st%20Step.png)
+<figure>
+  <img src="images/Figure%207.4.%20Task%20Scheduling%20Example%20-%201st%20Step.png"
+       alt="Figure 7.4. Task Scheduling Example: 1st Step"
+       style="display:block; margin: auto;">
+  <figcaption style="white-space: nowrap; text-align: center;">Figure 7.4. Task Scheduling Example: 1st Step</figcaption>
+</figure>
 
 Adv1 与更高优先级的 Conn2 重叠。Adv1 非常灵活，因此可以如下图所示进行移动。
 
-![Figure 7.5. Task Scheduling Example: 2nd Step](../images/UG305/Figure%207.5.%20Task%20Scheduling%20Example%20-%202nd%20Step.png)
+<figure>
+  <img src="images/Figure%207.5.%20Task%20Scheduling%20Example%20-%202nd%20Step.png"
+       alt="Figure 7.5. Task Scheduling Example: 2nd Step"
+       style="display:block; margin: auto;">
+  <figcaption style="white-space: nowrap; text-align: center;">Figure 7.5. Task Scheduling Example: 2nd Step</figcaption>
+</figure>
 
 Conn2 与更高优先级的 Conn4 重叠。由于 Conn2 不灵活，因此 Conn2 的调度失败。
 
-![Figure 7.6. Task Scheduling Example: 3rd Step](../images/UG305/Figure%207.6.%20Task%20Scheduling%20Example%20-%203rd%20Step.png)
+<figure>
+  <img src="images/Figure%207.6.%20Task%20Scheduling%20Example%20-%203rd%20Step.png"
+       alt="Figure 7.6. Task Scheduling Example: 3rd Step"
+       style="display:block; margin: auto;">
+  <figcaption style="white-space: nowrap; text-align: center;">Figure 7.6. Task Scheduling Example: 3rd Step</figcaption>
+</figure>
 
 Conn4 不与其他任务重叠，因此将 Conn1 末端调整为在 Conn4 开始之前停止。
 
-![Figure 7.7. Task Scheduling Example: 4th Step](../images/UG305/Figure%207.7.%20Task%20Scheduling%20Example%20-%204th%20Step.png)
+<figure>
+  <img src="images/Figure%207.7.%20Task%20Scheduling%20Example%20-%204th%20Step.png"
+       alt="Figure 7.7. Task Scheduling Example: 4th Step"
+       style="display:block; margin: auto;">
+  <figcaption style="white-space: nowrap; text-align: center;">Figure 7.7. Task Scheduling Example: 4th Step</figcaption>
+</figure>
 
 最后 Adv1 运行。Conn4 调整为在 Adv1 启动之前结束。
 
-![Figure 7.8. Task Scheduling Example: 4th Step](../images/UG305/Figure%207.8.%20Task%20Scheduling%20Example%20-%204th%20Step.png)
+<figure>
+  <img src="images/Figure%207.8.%20Task%20Scheduling%20Example%20-%204th%20Step.png"
+       alt="Figure 7.8. Task Scheduling Example: 4th Step"
+       style="display:block; margin: auto;">
+  <figcaption style="white-space: nowrap; text-align: center;">Figure 7.8. Task Scheduling Example: 4th Step</figcaption>
+</figure>
 
 ## 7.3 Modifying Priorities
 
@@ -971,4 +1056,4 @@ typedef struct{
 
 最后，参数 `rail_mapping_offset` 和 `rail_mapping_range` 定义了如何将 Bluetooth 链路层优先级映射到全局 RAIL 无线调度器优先级。这些值的映射可以在 [7.1 Bluetooth Priorities](#7-1-Bluetooth-Priorities) 中看到。
 
-当前（自 Gecko SDK version 2.2 起）， `rail_mapping_offset` 和 `rail_mapping_range` 的默认值为 16。
+当前（自 Gecko SDK version 2.2 起），`rail_mapping_offset` 和 `rail_mapping_range` 的默认值为 16。
