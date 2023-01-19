@@ -106,7 +106,7 @@ OpenThread 是在 BSD 3-Clause 许可证下发布的。可参阅 LICENSE 文件�
 ### 非易失性数据存储
 
 * [x] [UG103.07: Non-Volatile Data Storage Fundamentals](../Others/UG103.7/Non-Volatile%20Data%20Storage%20Fundamentals.md) —— 介绍了使用闪存的非易失性数据存储以及为 Silicon Labs 微控制器和 SoC 提供的三种不同的存储实现：Simulated EEPROM、PS Store 和 NVM3。
-* [ ] [AN1135: Using Third Generation Non-Volatile Memory (NVM3) Data Storage]() —— 解释了如何在各种协议实现中使用 NVM3 作为非易失性数据存储。
+* [x] [AN1135: Using Third Generation Non-Volatile Memory (NVM3) Data Storage](../Others/AN1135/Using%20Third%20Generation%20Non-Volatile%20Memory%20(NVM3)%20Data%20Storage.md) —— 解释了如何在各种协议实现中使用 NVM3 作为非易失性数据存储。
 
 ### 测试
 
