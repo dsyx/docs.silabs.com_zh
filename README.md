@@ -5,7 +5,7 @@
 <table style="white-space: nowrap; text-align: center; display: flex; justify-content: center;">
 <tbody>
   <tr>
-    <td><a href=""><img src="images/icon-bluetooth-blue.svg"><p>Bluetooth</p></a></td>
+    <td><a href="Bluetooth/README.md"><img src="images/icon-bluetooth-blue.svg"><p>Bluetooth</p></a></td>
     <td><a href=""><img src="images/icon-platform-blue.svg"><p>Bluetooth Xpress</p></a></td>
     <td><a href=""><img src="images/icon-connect-blue.svg"><p>Connect</p></a></td>
     <td><a href=""><img src="images/icon-platform-blue.svg"><p>Gecko Bootloader</p></a></td>
