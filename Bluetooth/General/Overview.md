@@ -24,7 +24,7 @@ Silicon Labs Bluetooth 栈的特性在下表中列出。
 
 所有部署 Bluetooth 技术的产品都必须通过Bluetooth SIG 的资格认证过程。在线资源将帮助你了解关于 [Bluetooth 资格认证](https://www.bluetooth.com/develop-with-bluetooth/qualification-listing/qualification-consultants/)、流程和 [Launch Studio](https://www.bluetooth.org/OTV/new_vids/launch-studio-SG-English/content/index.html#/?_k=esxjsd) 教程的更多信息，Launch Studio 是用来完成 Bluetooth 资格认证流程的在线工具。如果想获得设备认证的帮助，可以考虑联系离你最近的 [Bluetooth 认证顾问](https://www.bluetooth.com/develop-with-bluetooth/qualification-listing/qualification-consultants/)。
 
-当基于 Silicon Labs 的 Bluetooth 栈认证你的终端产品时，请整合预认证的组件。要了解更多信息并查看预认证组件列表，请参阅 [QSG169: Bluetooth® SDK v3.x Quick-Start Guide](https://www.silabs.com/documents/public/quick-start-guides/qsg169-bluetooth-sdk-v3x-quick-start-guide.pdf)。
+当基于 Silicon Labs 的 Bluetooth 栈认证你的终端产品时，请整合预认证的组件。要了解更多信息并查看预认证组件列表，请参阅 [QSG169: Bluetooth® SDK v3.x Quick-Start Guide](../QSG169/Bluetooth%20Quick-Start%20Guide%20for%20SDK%20v3.x%20and%20Higher.md)。
 
 ### Bluetooth 栈 API
 
@@ -72,7 +72,7 @@ CMSIS（Cortex Microcontroller Software Interface Standard）是所有 ARM Corte
 
 ## 关于 Bluetooth SDK
 
-Bluetooth SDK 是一个完整的软件开发套件，使您能够使用 C 编程语言在 Bluetooth 栈之上开发应用程序。该 SDK 还支持创建 Standalone 应用程序，其中 Bluetooth 栈和应用程序都在 Wireless Gecko 中运行，或 NCP 架构，其中应用程序在外部 Host 上运行，而 Bluetooth 栈在 Wireless Gecko 中运行。[SG169: Bluetooth® SDK v3.x Quick-Start Guide](https://www.silabs.com/documents/public/quick-start-guides/qsg169-bluetooth-sdk-v3x-quick-start-guide.pdf) 中描述了 SDK 内容和文件夹结构。
+Bluetooth SDK 是一个完整的软件开发套件，使您能够使用 C 编程语言在 Bluetooth 栈之上开发应用程序。该 SDK 还支持创建 Standalone 应用程序，其中 Bluetooth 栈和应用程序都在 Wireless Gecko 中运行，或 NCP 架构，其中应用程序在外部 Host 上运行，而 Bluetooth 栈在 Wireless Gecko 中运行。[QSG169: Bluetooth® SDK v3.x Quick-Start Guide](../QSG169/Bluetooth%20Quick-Start%20Guide%20for%20SDK%20v3.x%20and%20Higher.md) 中描述了 SDK 内容和文件夹结构。
 
 ## 关于演示和示例
 
