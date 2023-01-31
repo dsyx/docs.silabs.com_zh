@@ -818,7 +818,7 @@ Bluetooth NCP Commander 可以通过 Project Configurator 的 Configuration Tool
 
 #### Testing with the Smartphone App
 
-1. 在 Master 端（智能手机），从 Google Play Store 或 App Store 安装 **EFR Connect** App，然后打开它。要找到您的正在广告的设备，请点击 Develop 选项卡，然后点击 **Bluetooth Browser**。这会显示附近的所有正在广告的设备。通过点击 “Silabs Example” 旁边的 **Connect** 来连接到您的设备。它的 GATT 数据库会自动被发现并显示。点击任何 Service 以列出其 Characteristic 并点击任何 Characteristic 以读取其值。<br>![4.1 Testing on Android Smartphone](images/4.1%20Testing%20on%20Android%20Smartphone.png "4.1 Testing on Android Smartphone")<br>![4.2 Testing on iOS Smartphone](images/4.2%20Testing%20on%20iOS%20Smartphone.png "4.2 Testing on iOS Smartphone")
+1. 在 Master 端（智能手机），从 Google Play Store 或 App Store 安装 **EFR Connect** App，然后打开它。要找到您的正在广告的设备，请点击 Develop 选项卡，然后点击 **Bluetooth Browser**。这会显示附近的所有正在广告的设备。通过点击 “Silabs Example” 旁边的 **Connect** 来连接到您的设备。它的 GATT 数据库会自动被发现并显示。点击任何 Service 以列出其 Characteristic 并点击任何 Characteristic 以读取其值。<br>![4.1 Testing on Android Smartphone](images/F4.1%20Testing%20on%20Android%20Smartphone.png "4.1 Testing on Android Smartphone")<br>![4.2 Testing on iOS Smartphone](images/F4.2%20Testing%20on%20iOS%20Smartphone.png "4.2 Testing on iOS Smartphone")
 
 ### 4.3.2 Testing the iBeacon Demo
 
@@ -826,9 +826,9 @@ Bluetooth Beacons 是不可连接的广告，它可以帮助您定位设备、�
 
 将 **iBeacon** Demo 刷写到设备后，您可以使用 **EFR Connect** App 中的 **Bluetooth Browser** 找到 Beacon 信号。启动 **EFR Connect**，点击 Develop 选项卡，然后点击 **Bluetooth Browser**。要过滤 Beacons，请点击 ![](images/filter.png)，然后选择要显示的 Beacon 类型。该 App 为您提供了 Beacon 相关的基本信息，如 RSSI —— 可以帮助确定 Beacon 的距离。点击 Beacon 以获取其提供的数据的更多相关信息。
 
-![4.3 Testing on Android smartphone](images/4.3%20Testing%20on%20Android%20Smartphone.png "4.3 Testing on Android Smartphone")
+![4.3 Testing on Android smartphone](images/F4.3%20Testing%20on%20Android%20Smartphone.png "4.3 Testing on Android Smartphone")
 
-![4.4 Testing on iOS smartphone](images/4.4%20Testing%20on%20iOS%20Smartphone.png "4.4 Testing on iOS smartphone")
+![4.4 Testing on iOS smartphone](images/F4.4%20Testing%20on%20iOS%20Smartphone.png "4.4 Testing on iOS smartphone")
 
 ### 4.3.3 Testing the Health Thermometer Demo
 
@@ -838,9 +838,9 @@ NCP Empty Demo 使用基本的静态信息（如设备名称）实现了最小�
 
 尝试触摸 Mainboard 上的温度传感器（见 [4.1 Prepare the Mainboard](#41-prepare-the-mainboard)）。您应该能够看到温度发生变化。
 
-![4.5 Testing on Android smartphone](images/4.5%20Testing%20on%20Android%20Smartphone.png "4.5 Testing on Android smartphone")
+![4.5 Testing on Android smartphone](images/F4.5%20Testing%20on%20Android%20Smartphone.png "4.5 Testing on Android smartphone")
 
-![4.6 Testing on iOS Smartphone](images/4.6%20Testing%20on%20iOS%20Smartphone.png "4.6 Testing on iOS Smartphone")
+![4.6 Testing on iOS Smartphone](images/F4.6%20Testing%20on%20iOS%20Smartphone.png "4.6 Testing on iOS Smartphone")
 
 # 5 Starting Application Development
 
