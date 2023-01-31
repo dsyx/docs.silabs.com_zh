@@ -143,7 +143,7 @@ Demos 和 Examples 位于 Simplicity Studio 启动器视图的 Example Projects 
 ### Getting Started
 
 * [x] [Getting Started with Simplicity Studio 5 and the Gecko SDK](../SimplicityStudio/Simplicity%20Studio%205%20Users%20Guide/Getting%20Started.md) - 描述了下载开发工具和包含 Silicon Labs Bluetooth SDK 的 Gecko SDK。介绍了 Simplicity Studio 5 界面。
-* [ ] [UG103.14: Bluetooth LE Fundamentals]() - 为刚接触 Bluetooth Low Energy 技术的人提供了一个概述。
+* [x] [UG103.14: Bluetooth LE Fundamentals](UG103.14/Bluetooth%20LE%20Fundamentals.md) - 为刚接触 Bluetooth Low Energy 技术的人提供了一个概述。
 * [x] [QSG169: Bluetooth SDK v3.x Quick Start Guide](QSG169/Bluetooth%20Quick-Start%20Guide%20for%20SDK%20v3.x%20and%20Higher.md) - 描述了使用 Simplicity Studio 5 IDE 和工具进行 Bluetooth SDK v3.x 的应用开发。
 * [ ] [AN1255: Transitioning from the v2.x to the v3.x Bluetooth SDK]() - 描述了在 Simplicity Studio 4 中使用 Bluetooth SDK v2.x 和在 Simplicity Studio 5 中使用 Bluetooth SDK v3.x 之间的区别，概述了将 v2.x 项目迁移到 v3.x 所需的步骤。
 
