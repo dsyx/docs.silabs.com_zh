@@ -149,7 +149,7 @@ Demos 和 Examples 位于 Simplicity Studio 启动器视图的 Example Projects 
 
 ### Developing with Bluetooth LE
 
-* [ ] [UG434: Silicon Labs Bluetooth C Application Developer's Guide for SDK v3.x]() - 涵盖了 Bluetooth Stack v3.x 架构、应用开发流程、使用 MCU 内核和外设、协议栈配置选项和协议栈资源用量。
+* [x] [UG434: Silicon Labs Bluetooth C Application Developer's Guide for SDK v3.x](UG434/Silicon%20Labs%20Bluetooth%20C%20Application%20Developer's%20Guide%20for%20SDK%20v3.x%20and%20Higher.md) - 涵盖了 Bluetooth Stack v3.x 架构、应用开发流程、使用 MCU 内核和外设、协议栈配置选项和协议栈资源用量。
 * [ ] [UG438: GATT Configurator User's Guide for Bluetooth SDK v3.x and Higher]() - 描述了如何使用 Simplicity Studio 5 的 GATT Configurator，这是一个直观的界面，可以访问 Bluetooth Specification 中定义的所有 Profiles、Services、Characteristics 和 Descriptors。
 * [ ] [UG118: Blue Gecko Bluetooth Profile Toolkit Developer's Guide]() - 检阅使用这种基于 XML 的标记语言来描述 Bluetooth GATT Database、配置访问和安全属性，并将 GATT Database 作为固件的一部分。
 * [ ] [AN1259: Using the v3.x Silicon Labs Bluetooth Stack in Network Co-Processor Mode]() - 描述了在 NCP 模式下使用 Bluetooth Stack 时，如何配置 NCP 目标和如何对 NCP Host 进行编程。
