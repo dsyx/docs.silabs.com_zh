@@ -154,7 +154,7 @@ Demos 和 Examples 位于 Simplicity Studio 启动器视图的 Example Projects 
 * [x] [UG118: Blue Gecko Bluetooth Profile Toolkit Developer's Guide](UG118/Bluetooth%20Profile%20Toolkit%20Developer's%20Guide.md) - 检阅使用这种基于 XML 的标记语言来描述 Bluetooth GATT Database、配置访问和安全属性，并将 GATT Database 作为固件的一部分。
 * [ ] [AN1259: Using the v3.x Silicon Labs Bluetooth Stack in Network Co-Processor Mode]() - 描述了在 NCP 模式下使用 Bluetooth Stack 时，如何配置 NCP 目标和如何对 NCP Host 进行编程。
 * [ ] [AN1328: Enabling a Radio Co-Processor using the Bluetooth Controller and HCI Functions]() - 简要介绍了标准的 HCI 以及如何使用 Silicon Labs Bluetooth LE Controller。
-* [ ] [AN1260: Integrating v3.x Silicon Labs Bluetooth Applications with Real-Time Operating Systems]() - 描述了如何将 v3.x Silicon Labs Bluetooth 应用程序与 RTOS 集成，并演示了如何将时间驱动和事件驱动的应用程序与 Bluetooth Stack 同时运行。
+* [x] [AN1260: Integrating v3.x Silicon Labs Bluetooth Applications with Real-Time Operating Systems](AN1260/Integrating%20v3.x%20Silicon%20Labs%20Bluetooth%20Applications%20with%20Real-Time%20Operating%20Systems%20in%20SDK%20v3.x%20and%20Higher.md) - 描述了如何将 v3.x Silicon Labs Bluetooth 应用程序与 RTOS 集成，并演示了如何将时间驱动和事件驱动的应用程序与 Bluetooth Stack 同时运行。
 * [ ] [AN1362: Amazon FreeRTOS Architecture and Sample Applications]() - 总结了 Amazon FreeRTOS 组件和示例应用程序，并解释了如何使用这些示例与 AWS（Amazon Web Services）云进行智能手机应用程序的通信。
 * [ ] [AN1366: Bluetooth LE Use Case-Based Low Power Optimization]() - 描述了如何利用 Bluetooth 技术的不同特性来实现特定使用情况下的最小能耗。
 * [x] [UG162: Simplicity Commander Reference Guide](../Others/UG162/Simplicity%20Commander%20Reference%20Guide.md) - 描述了如何以及何时使用 Simplicity Commander 的命令行接口。
