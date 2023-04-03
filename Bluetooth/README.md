@@ -193,7 +193,7 @@ Demos 和 Examples 位于 Simplicity Studio 启动器视图的 Example Projects 
 
 ### Bootloading
 
-* [x] [UG103.06: Bootloader Fundamentals](../Others/UG103.6/Bootloader%20Fundamentals.md) - 介绍了 Silicon Labs 网络设备的引导加载。讨论了 Gecko Bootloader 以及遗留的 Ember Bootloader 和 Bluetooth Bootloader，并描述了它们各自使用的文件格式。
+* [x] [UG103.06: Bootloader Fundamentals](../GeckoBootloader/UG103.6/Bootloader%20Fundamentals.md) - 介绍了 Silicon Labs 网络设备的引导加载。讨论了 Gecko Bootloader 以及遗留的 Ember Bootloader 和 Bluetooth Bootloader，并描述了它们各自使用的文件格式。
 * [ ] [UG489: Silicon Labs Gecko Bootloader User's Guide for GSDK 4.0 and Higher]() - 描述了用于 EFR32 SoC 和 NCP 的 Silicon Labs Gecko Bootloader 的高级实现，并提供了有关如何开始使用 Gecko Bootloader 和 GSDK 4.0（及更高版本）中的 Silicon Labs 无线协议栈的信息。
 * [ ] [AN1086: Using the Gecko Bootloader with Silicon Labs Bluetooth Applications]() - 包含将 Gecko Bootloader 与 Silicon Labs Bluetooth 应用程序结合使用的相关详细信息。它补充了 [UG489: Silicon Labs Gecko Bootloader User's Guide for GSDK 4.0 and Higher]() 中提供的通用 Gecko Bootloader 实现信息。
 * [ ] [AN1326: Transitioning to the Updated Gecko Bootloader in GSDK 4.0 and Higher]() - GSDK 4.0 中引入的 Gecko Bootloader v2.x 与 Gecko Bootloader v1.x 相比包含了许多更改。此文档描述了版本之间的差异，包括如何在 Simplicity Studio 5 中配置新的 Gecko Bootloader。

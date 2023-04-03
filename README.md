@@ -8,7 +8,7 @@
     <td><a href="Bluetooth/README.md"><img src="images/icon-bluetooth-blue.svg"><p>Bluetooth</p></a></td>
     <td><a href=""><img src="images/icon-platform-blue.svg"><p>Bluetooth Xpress</p></a></td>
     <td><a href=""><img src="images/icon-connect-blue.svg"><p>Connect</p></a></td>
-    <td><a href=""><img src="images/icon-platform-blue.svg"><p>Gecko Bootloader</p></a></td>
+    <td><a href="GeckoBootloader/README.md"><img src="images/icon-platform-blue.svg"><p>Gecko Bootloader</p></a></td>
   </tr>
   <tr>
     <td><a href=""><img src="images/icon-platform-blue.svg"><p>Gecko Platform</p></a></td>
