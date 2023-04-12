@@ -295,7 +295,7 @@ sudo INFRA_IF_NAME=eth0 "OTBR_OPTIONS="-DOT_CONFIG=openthread-core-silabs-posix-
 要使用 SPI 接口构建 OTBR，请按如下方式指定 RCP 总线：
 
 ```Shell
-sudo INFRA_IF_NAME=eth0 "OTBR_OPTIONS="-DOT_POSIX_CONFIG_RCP_BUS=SPI" ./script/setup
+sudo INFRA_IF_NAME=eth0 OTBR_OPTIONS="-DOT_POSIX_CONFIG_RCP_BUS=SPI" ./script/setup
 ```
 
 **注意**：如果不指定 `OT_POSIX_CONFIG_RCP_BUS`，则默认为 UART/HDLC 接口。
@@ -394,7 +394,7 @@ sudo INFRA_IF_NAME=eth0 "OTBR_OPTIONS="-DOT_POSIX_CONFIG_RCP_BUS=SPI" ./script/s
 * 编辑 `/etc/default/otbr-agent` 文件，并查找 `OTBR_AGENT_OPTS` 配置。根据您的硬件设置，在该参数中包含正确的 GPIO，如下所示，请参阅 [3.1.1](#311-raspberry-pi-与-wstk-之间的硬线-spi-连接) 和 [3.1.2](#312-用于-raspberry-pi-与-wstk-之间的-spi-连接的无线扩展板) 节。
     * 如果 Raspberry Pi 硬连线到 wstk 扩展连接器上的 SPI 引脚，请使用以下参数。如果您使用的是 Rasp Pi 的 CS0，请使用 `spidev0.0`，或者如果是 CS1 引脚则使用 `spidev0.1`。
         ```Text
-        OTBR_AGENT_OPTS="-I wpan0 -B eth0 spinel+spi:///dev/spidev0.0?gpio-int-device=/dev/gpiochip0&gpioint-line=21&gpio-reset-device=/dev/gpiochip0&gpio-reset-line=20&no-reset=1&spi-speed=1000000"
+        OTBR_AGENT_OPTS="-I wpan0 -B eth0 spinel+spi:///dev/spidev0.0?gpio-int-device=/dev/gpiochip0&gpio-int-line=21&gpio-reset-device=/dev/gpiochip0&gpio-reset-line=20&no-reset=1&spi-speed=1000000"
         ```
     * 如果使用了无线扩展板（brd8016A）将无线电板安装在 Raspberry Pi 上，请使用以下参数。
         ```Text
