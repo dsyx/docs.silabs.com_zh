@@ -115,7 +115,7 @@ Silicon Labs Gecko Bootloader 是 Silicon Labs 所有较新 MCU 和无线 MCU �
     * **Signed upgrade image file** ：Gecko Bootloader 支持对升级映像文件进行加密签名验证。这允许 Bootloader 和 Application 在开始升级过程之前验证 Application 或 Bootloader 升级是否来自可信源，确保映像文件是由可信方创建和签名的。
     * **Encrypted upgrade image file** ：映像文件也可以加密，防止窃听者获取明文的固件映像。
 
-Gecko Bootloader 对其升级映像使用一个专有格式，称为 GBL（Gecko Bootloader 文件）。这些文件的文件扩展名为“.gbl”。有关详细信息，请参见 [2 Gecko Bootloader File Format]() 。
+Gecko Bootloader 对其升级映像使用一个专有格式，称为 GBL（Gecko Bootloader 文件）。这些文件的文件扩展名为“.gbl”。有关详细信息，请参见 [2 Gecko Bootloader File Format](#2-gecko-bootloader-file-format) 。
 
 在 Series 1 设备上，Gecko Bootloader 采用一个 Two-Stage 设计：First Stage 和 Main Stage，其中最小的 First Stage Bootloader 用于升级 Main Bootloader。First Stage Bootloader 仅包含读写内部闪存中固定地址的功能。要执行 Main Bootloader 升级，正在运行的 Main Bootloader 会验证 Bootloader 升级映像文件的完整性和真实性。然后正在运行的 Main Bootloader 会将升级映像写到内部闪存中的固定位置，并向 First Stage Bootloader 发出重新引导。First Stage Bootloader 会在将升级映像复制到 Main Bootloader 位置之前通过计算 CRC32 校验和来验证 Main Bootloader 固件升级映像的完整性。
 
@@ -127,7 +127,7 @@ Gecko Bootloader 对其升级映像使用一个专有格式，称为 GBL（Gecko
 
 Secure Engine 通过从内部闪存中的可配置位置复制，提供将映像安装到内部闪存地址 0x0 的功能。这使得它可以采用一个 2-Stage 设计，其中不存在 Main Bootloader。然而，在本文档中假定存在 Main Bootloader。
 
-要执行 Main Bootloader 升级，正在运行的 Main Bootloader 会验证 Bootloader 升级映像文件的完整性和真实性。然后正在运行的 Main Bootloader 会将升级映像写到闪存中的升级位置，并请求 Secure Engine 安装它。在某些设备上，Secure Engine 还能够根据信任根验证 Main Bootloader 更新映像的真实性。Secure Engine 自身可以使用相同的机制进行升级。有关详细信息，请参见 [5 Gecko Bootloader Operation - Secure Engine Upgrade]() 。
+要执行 Main Bootloader 升级，正在运行的 Main Bootloader 会验证 Bootloader 升级映像文件的完整性和真实性。然后正在运行的 Main Bootloader 会将升级映像写到闪存中的升级位置，并请求 Secure Engine 安装它。在某些设备上，Secure Engine 还能够根据信任根验证 Main Bootloader 更新映像的真实性。Secure Engine 自身可以使用相同的机制进行升级。有关详细信息，请参见 [5 Gecko Bootloader Operation - Secure Engine Upgrade](#5-gecko-bootloader-operation---secure-engine-upgrade) 。
 
 Main Bootloader 由一个通用核心、驱动程序和一组赋予 Bootloader 特定功能的组件组成。通用 Bootloader 核心现在以完整源代码交付提供，而不是以前的编译库和源代码的组合，而组件继续以源代码交付。通用 Bootloader 核心包含解析 GBL 文件并将其内容刷写到设备的功能。
 
@@ -137,7 +137,7 @@ Standalone Bootloader 使用一个通信通道来获取固件升级映像。NCP 
 
 Application Bootloader 依赖于 Application 来获取固件升级映像。Application Bootloader 通过将固件升级映像写到一个闪存区域（称为下载空间）来执行固件映像升级。Application 可以用任何方便的方式（UART、OTA、Ethernet、USB 等）将固件升级映像传输到下载空间。下载空间可以是外部存储设备，例如 EEPROM 或 dataflash，也可以是设备内部闪存的一部分。Gecko Bootloader 可以将下载空间划分为多个存储槽，同时存储多个固件升级映像。要用作 Application Bootloader，必须配置提供 Bootloader 存储实现的组件。
 
-Silicon Labs 提供了示例 Bootloader，这些 Bootloader 带有一组预配置的已安装组件，用于在独立模式或应用模式下进行配置。请参见 [7 Configuring the Gecko Bootloader]() 。Silicon Labs Gecko SDK Suite 还包括用于多种不同 EFR32 设备的预编译 Bootloader 映像。在撰写本文时，提供了下表中展示的映像。
+Silicon Labs 提供了示例 Bootloader，这些 Bootloader 带有一组预配置的已安装组件，用于在独立模式或应用模式下进行配置。请参见 [7 Configuring the Gecko Bootloader](#7-configuring-the-gecko-bootloader) 。Silicon Labs Gecko SDK Suite 还包括用于多种不同 EFR32 设备的预编译 Bootloader 映像。在撰写本文时，提供了下表中展示的映像。
 
 **注意** ：这些预编译映像中未启用 Bootloader 安全性特性。
 
@@ -154,7 +154,7 @@ Silicon Labs 提供了示例 Bootloader，这些 Bootloader 带有一组预配�
 
 以下小节概述了 Gecko Bootloader 的通用核心、驱动程序和组件。有关详细信息，包括错误代码和条件的详细信息，请参见 Gecko Bootloader API Reference，它随 SDK 一起提供，位于 platform/bootloader/documentation 文件夹中。
 
-使用 Simplicity Commander 的 `commander device pageerase --region @bootloader` 命令可以完全擦除 Bootloader 区域。在此状态下，设备将不会启动，直到 CLW0\[1\] 被清除或刷写了 Dummy Bootloader。有关如何将 Simplicity Commander 与 Gecko Bootloader 结合使用的更多信息，请参见 [8 Simplicity Commander and the Gecko Bootloader]() 。
+使用 Simplicity Commander 的 `commander device pageerase --region @bootloader` 命令可以完全擦除 Bootloader 区域。在此状态下，设备将不会启动，直到 CLW0\[1\] 被清除或刷写了 Dummy Bootloader。有关如何将 Simplicity Commander 与 Gecko Bootloader 结合使用的更多信息，请参见 [8 Simplicity Commander and the Gecko Bootloader](#8-simplicity-commander-and-the-gecko-bootloader) 。
 
 ## 1.1 Core
 
@@ -537,9 +537,9 @@ typedef struct {
 
 # 3 Gecko Bootloader Operation - Application Upgrade
 
-本节总结了 Gecko Bootloader 更新 Application 固件的操作，首先假设 Gecko Bootloader 配置为独立模式，然后假设其配置为 Application 模式。[4 Gecko Bootloader Operation - Bootloader Upgrade]() 提供了更新 Bootloader 固件的相同信息。
+本节总结了 Gecko Bootloader 更新 Application 固件的操作，首先假设 Gecko Bootloader 配置为独立模式，然后假设其配置为 Application 模式。[4 Gecko Bootloader Operation - Bootloader Upgrade](#3-gecko-bootloader-operation---application-upgrade) 提供了更新 Bootloader 固件的相同信息。
 
-本节中说明 Gecko Bootloader 操作的图不提供有关不同设备的 Bootloader 内存布局的信息。有关详细信息，请参见 [UG103.6: Bootloader Fundamentals]() 中的“Memory Space for Bootloading”小节。
+本节中说明 Gecko Bootloader 操作的图不提供有关不同设备的 Bootloader 内存布局的信息。有关详细信息，请参见 *UG103.6: Bootloader Fundamentals* 中的“Memory Space for Bootloading”小节。
 
 ## 3.1 Standalone Bootloader Operation
 
@@ -609,14 +609,14 @@ Bootloader 遍历针对引导加载而标记的存储槽列表，并尝试验证
 
 # 4 Gecko Bootloader Operation - Bootloader Upgrade
 
-Bootloader 升级功能由 Series 1 设备上的 First Stage Bootloader 或 Series 2 设备上的 Secure Engine 提供。Secure Engine 自身也是可升级的。有关详细信息，请参见 [5 Gecko Bootloader Operation - Secure Engine Upgrade]() 。在 Series 1 设备上，First Stage Bootloader 不可升级。
+Bootloader 升级功能由 Series 1 设备上的 First Stage Bootloader 或 Series 2 设备上的 Secure Engine 提供。Secure Engine 自身也是可升级的。有关详细信息，请参见 [5 Gecko Bootloader Operation - Secure Engine Upgrade](#5-gecko-bootloader-operation---secure-engine-upgrade) 。在 Series 1 设备上，First Stage Bootloader 不可升级。
 
 升级 Main Bootloader 的要求取决于 Bootloader 的配置：
 
 * 带存储的 Application Bootloader：升级 Main Bootloader 需要一个包含 Bootloader 和 Application 升级映像的单一 GBL 文件。
 * 带通信接口的 Standalone Bootloader：升级 Bootloader 需要两个 GBL 文件，一个只含有 Bootloader 升级映像，一个只含有 Application 升级映像。
 
-Bootloader 升级过程的安全性通过签名 GBL 文件来提供。参见 [9.3.3 Creating a Signed and Encrypted GBL Upgrade Image File from an Application]() 。
+Bootloader 升级过程的安全性通过签名 GBL 文件来提供。参见 [9.3.3 Creating a Signed and Encrypted GBL Upgrade Image File from an Application](#933-creating-a-signed-and-encrypted-gbl-upgrade-image-file-from-an-application) 。
 
 本节中说明 Gecko Bootloader 操作的图不提供有关不同设备的 Bootloader 内存布局的信息。有关详细信息，请参见 *UG103.6: Bootloader Fundamentals* 中的“Memory Space for Bootloading”部分。为方便起见，图中未区分 SE 和 VSE。
 
@@ -652,7 +652,7 @@ Bootloader 通过保持 Bootloader 向量表的部分，直到 GBL 文件的 CRC
 * 若升级映像位置中的 CRC 有效而当前 Main Bootloader 位置中的 CRC 无效，则不论版本地复制升级映像到 Main Bootloader。这是因为如果 Main Bootloader 映像损坏，则无法依赖 Main Bootloader 的版本。
 * 若升级位置中的 CRC 无效，则不会应用升级。
   
-在 Series 2 设备上，可以在应用 Bootloader 升级之前选择性地验证 Main Bootloader 的真实性。有关 Bootloader 映像版本控制的更多信息，请参见 [7.5 Setting a Version Number]() 。
+在 Series 2 设备上，可以在应用 Bootloader 升级之前选择性地验证 Main Bootloader 的真实性。有关 Bootloader 映像版本控制的更多信息，请参见 [7.5 Setting a Version Number](#75-setting-a-version-number) 。
 
 ## 4.2 Bootloader Upgrade on Application Bootloaders with Storage
 
@@ -679,13 +679,13 @@ Bootloader 通过保持 Bootloader 向量表的部分，直到 GBL 文件的 CRC
 
 在 Series 1 设备上，Main Bootloader 向 First Stage Bootloader 发出信号，告知它应该通过向 SRAM 底部的共享内存位置写入一个命令来进入固件升级模式，然后执行软件复位。在 Series 2 设备上，Secure Engine 通信接口用于向 Secure Engine 发出 Bootloader 升级已准备就绪的信号。
 
-在 Series 1 设备上，First Stage Bootloader 验证内部闪存中 Bootloader 升级位置中存在的 Bootloader 升级的 CRC，如果升级的版本号高于现有的 Main Bootloader 版本号，则将 Bootloader 升级复制到 Main Bootloader 上。在 Series 2 设备上，可以在应用 Bootloader 升级之前选择性地验证 Main Bootloader 的真实性。有关 Bootloader 映像版本控制的更多信息，请参见 [7.5 Setting a Version Number]() 。
+在 Series 1 设备上，First Stage Bootloader 验证内部闪存中 Bootloader 升级位置中存在的 Bootloader 升级的 CRC，如果升级的版本号高于现有的 Main Bootloader 版本号，则将 Bootloader 升级复制到 Main Bootloader 上。在 Series 2 设备上，可以在应用 Bootloader 升级之前选择性地验证 Main Bootloader 的真实性。有关 Bootloader 映像版本控制的更多信息，请参见 [7.5 Setting a Version Number](#75-setting-a-version-number) 。
 
-进入新的 Main Bootloader，并验证存储槽列表中针对引导加载而标记的映像。当映像解析器解析到包含 Bootloader + Application 升级的 GBL 文件的槽时，Bootloader 升级的版本号等于正在运行的 Main Bootloader 版本，因此不会进行另一次的 Bootloader 升级。相反，Application 升级数据在回调中返回。新的 Application 的引导加载如 [3.2 Application Bootloader Operation]() 中所述进行。
+进入新的 Main Bootloader，并验证存储槽列表中针对引导加载而标记的映像。当映像解析器解析到包含 Bootloader + Application 升级的 GBL 文件的槽时，Bootloader 升级的版本号等于正在运行的 Main Bootloader 版本，因此不会进行另一次的 Bootloader 升级。相反，Application 升级数据在回调中返回。新的 Application 的引导加载如 [3.2 Application Bootloader Operation](#32-application-bootloader-operation) 中所述进行。
 
 ### 4.2.1 Storage Space Size Configuration
 
-存储空间大小必须配置为有足够的空间来存储升级映像。根据配置的不同，Bootloader 的大小可能会有所不同。有关 Bootloader 的大小要求，请参见 [7.8 Size Requirements for Different Bootloader Configurations for Series 1 Devices]() 。
+存储空间大小必须配置为有足够的空间来存储升级映像。根据配置的不同，Bootloader 的大小可能会有所不同。有关 Bootloader 的大小要求，请参见 [7.8 Size Requirements for Different Bootloader Configurations for Series 1 Devices](#78-size-requirements-for-different-bootloader-configurations-for-series-1-devices) 。
 
 ### 4.2.2 Upgrading Bootloaders without Secure Boot to Bootloaders with Secure Boot
 
@@ -693,11 +693,11 @@ Bootloader 通过保持 Bootloader 向量表的部分，直到 GBL 文件的 CRC
 
 1. 准备启用了 Secure Boot 的 Gecko Bootloader 映像。该 Bootloader 的版本需要高于设备上的 Bootloader。
     * 从 Simplicity Studio 中的 **Bootloader Core** 组件里通过选中 **Enable secure boot** 选项开启 Secure Boot。
-2. 生成一个公/私签名密钥对。有关创建签名密钥对的更多信息，请参见 [9.3.1 Generating Keys]() 。
+2. 生成一个公/私签名密钥对。有关创建签名密钥对的更多信息，请参见 [9.3.1 Generating Keys](#931-generating-keys) 。
 3. 将上一步生成的公钥写入设备。默认情况下，公钥作为一个 Manufacturing Token 存储在设备中。只要将 Lock Bits 页配置为允许闪存写入，就可以通过设备上运行的 Application 代码写入该密钥。如果 Lock Bits 页被锁定，那么它只能被调试器擦除。因此，驻留在 Lock Bits 页中的签名/解密密钥无法从固件中擦除。这意味着，对于现场设备，闪存中的那些区域无法用新的替换。但是，可以修改步骤 1 中准备的 Gecko Bootloader 以在不同的位置查找解密和签名密钥。密钥位置在 Bootloader 项目文件 `btl_security_tokens.c` 中定义。
-4. 使用步骤 2 中生成的私钥准备一个签名的 Application 映像。有关签名 Application 的更多信息，请参见 [9.3.2 Signing an Application Image for Secure Boot]() 。
-5. 使用 Gecko Bootloader 映像和签名的 Application 映像创建一个 GBL 文件。根据设备上运行的 Gecko Bootloader 的配置，GBL 文件需要是已签名/未签名的。有关创建 GBL 文件的更多详细信息，请参见 [9.3.3 Creating a Signed and Encrypted GBL Upgrade Image File from an Application]() 。
-6. 上传 GBL 文件。有关升级过程的更多详细信息，请参见 [4.2 Bootloader Upgrade on Application Bootloaders with Storage]() 。
+4. 使用步骤 2 中生成的私钥准备一个签名的 Application 映像。有关签名 Application 的更多信息，请参见 [9.3.2 Signing an Application Image for Secure Boot](#932-signing-an-application-image-for-secure-boot) 。
+5. 使用 Gecko Bootloader 映像和签名的 Application 映像创建一个 GBL 文件。根据设备上运行的 Gecko Bootloader 的配置，GBL 文件需要是已签名/未签名的。有关创建 GBL 文件的更多详细信息，请参见 [9.3.3 Creating a Signed and Encrypted GBL Upgrade Image File from an Application](#933-creating-a-signed-and-encrypted-gbl-upgrade-image-file-from-an-application) 。
+6. 上传 GBL 文件。有关升级过程的更多详细信息，请参见 [4.2 Bootloader Upgrade on Application Bootloaders with Storage](#42-bootloader-upgrade-on-application-bootloaders-with-storage) 。
 
 ### 4.2.3 Enabling Secure Boot RTSL on Series 2 Devices
 
@@ -707,11 +707,11 @@ Bootloader 通过保持 Bootloader 向量表的部分，直到 GBL 文件的 CRC
     *  从 Simplicity Studio 中的 **Bootloader Core** 组件里通过选中 **Enable secure boot** 选项开启 Secure Boot。
     *  对于 EFR32xG21，在 **Bootloader Core** 组件中，禁用 **Allow use of public key from manufacturing token storage** 选项。这意味着 Gecko Bootloader 永远不会使用存储在主闪存最后一页中的公钥。
     * （可选）在 **Bootloader Core** 组件中，选中 **Require signed firmware upgrade files** 选项。这意味着 Gecko Bootloader 将只接受签名的 GBL 文件。
-2. 生成一个公/私签名密钥对。有关创建签名密钥对的更多信息，请参见 [9.3.1 Generating Keys]() 。
-3. 准备一个 Application，将步骤 2 生成的公钥安装到 Secure Engine One-time Programmable 存储器中。在 VSE 中安装密钥需要一个复位例程。确保 Application 不会在复位循环中结束。从此 Application 创建一个未签名的 GBL 文件并上传。有关安装公钥的更多信息，请参见 *AN1218: Series 2 Secure Boot with RTSL* 。有关创建 GBL 文件的更多详细信息，请参见 [9.3.3 Creating a Signed and Encrypted GBL Upgrade Image File from an Application]() 。
-4. 使用步骤 2 中生成的私钥对步骤 1 中生成的 Gecko Bootloader 映像进行签名。有关签名二进制文件的更多信息，请参见 [9.3.2 Signing an Application Image for Secure Boot]() 。
+2. 生成一个公/私签名密钥对。有关创建签名密钥对的更多信息，请参见 [9.3.1 Generating Keys](#931-generating-keys) 。
+3. 准备一个 Application，将步骤 2 生成的公钥安装到 Secure Engine One-time Programmable 存储器中。在 VSE 中安装密钥需要一个复位例程。确保 Application 不会在复位循环中结束。从此 Application 创建一个未签名的 GBL 文件并上传。有关安装公钥的更多信息，请参见 *AN1218: Series 2 Secure Boot with RTSL* 。有关创建 GBL 文件的更多详细信息，请参见 [9.3.3 Creating a Signed and Encrypted GBL Upgrade Image File from an Application](#933-creating-a-signed-and-encrypted-gbl-upgrade-image-file-from-an-application) 。
+4. 使用步骤 2 中生成的私钥对步骤 1 中生成的 Gecko Bootloader 映像进行签名。有关签名二进制文件的更多信息，请参见 [9.3.2 Signing an Application Image for Secure Boot](#932-signing-an-application-image-for-secure-boot) 。
 5. 创建一个在 Secure Engine 上打开 Secure Boot 的自定义 Application，并使用步骤 2 生成的私钥对该 Application 二进制文件进行签名。有关如何在 Secure Engine 上打开 Secure Boot 的更多详细信息，请参见 *AN1218: Series 2 Secure Boot with RTSL* 。
-6. 使用步骤 4 中的 Gecko Bootloader 映像和步骤 5 中的 Application 创建 GBL 文件。如果在步骤 1 中选中了 **Bootloader Core** 组件的 **Require signed firmware upgrade files** 选项，则必须对 GBL 文件进行签名。有关创建 GBL 文件，请参见 [9.3.3 Creating a Signed and Encrypted GBL Upgrade Image File from an Application]() 。
+6. 使用步骤 4 中的 Gecko Bootloader 映像和步骤 5 中的 Application 创建 GBL 文件。如果在步骤 1 中选中了 **Bootloader Core** 组件的 **Require signed firmware upgrade files** 选项，则必须对 GBL 文件进行签名。有关创建 GBL 文件，请参见 [9.3.3 Creating a Signed and Encrypted GBL Upgrade Image File from an Application](#933-creating-a-signed-and-encrypted-gbl-upgrade-image-file-from-an-application) 。
 7. 上传包含 Gecko Bootloader 映像和 Application 的 GBL 文件。
 
 # 5 Gecko Bootloader Operation - Secure Engine Upgrade
@@ -763,7 +763,7 @@ Silicon Labs 通过 Simplicity Studio 提供签名和加密的 Secure Engine 升
 
 ### 5.1.2 Downloading and Applying an Application GBL Upgrade File
 
-Secure Engine 升级完成后，如果 Secure Engine 升级位置与 Application 重叠，则现有的 Application 将失效。包含 Application 升级的 GBL 升级文件会被传输到 Bootloader。Application 升级过程如下。有关详细信息，请参见 [3.1 Standalone Bootloader Operation]() 。
+Secure Engine 升级完成后，如果 Secure Engine 升级位置与 Application 重叠，则现有的 Application 将失效。包含 Application 升级的 GBL 升级文件会被传输到 Bootloader。Application 升级过程如下。有关详细信息，请参见 [3.1 Standalone Bootloader Operation](#31-standalone-bootloader-operation) 。
 
 ## 5.2 Secure Engine Upgrade on Application Bootloaders with Storage
 
@@ -790,7 +790,7 @@ Secure Engine 升级完成后，如果 Secure Engine 升级位置与 Application
 | EFR32xG22     | 24 kB                               |
 | EFR32xG23     | 96 kB                               |
 
-根据配置的不同，Bootloader 的大小可能会有所差异。有关 Bootloader 的大小要求，请参见 [7.8 Size Requirements for Different Bootloader Configurations for Series 1 Devices]() 。EFR32xG21 设备的 Bootloader 大小可达 16 kB，而 EFR32xG22、EFR32xG23 和 EFR32xG24 设备的 Bootloader 大小可达 24 kB。有关详细信息，请参见 *UG103.6: Bootloader Fundamentals* 。
+根据配置的不同，Bootloader 的大小可能会有所差异。有关 Bootloader 的大小要求，请参见 [7.8 Size Requirements for Different Bootloader Configurations for Series 1 Devices](#78-size-requirements-for-different-bootloader-configurations-for-series-1-devices) 。EFR32xG21 设备的 Bootloader 大小可达 16 kB，而 EFR32xG22、EFR32xG23 和 EFR32xG24 设备的 Bootloader 大小可达 24 kB。有关详细信息，请参见 *UG103.6: Bootloader Fundamentals* 。
 
 # 6 Getting Started with the Gecko Bootloader
 
@@ -878,7 +878,7 @@ GBL LZMA Compressed Programming Tag 包含一个完整的 LZMA 文件，包含 L
 
 以下小节介绍了示例 Bootloader 应用程序的关键配置选项。
 
-**注意** ：所有示例配置都禁用了安全特性。在开发过程中，Silicon Labs 强烈建议启用安全特性以防止未经授权的各方上传不受信任的程序代码。请参见 [9.3 Using Application Image Security Features]() 了解如何配置 Gecko Bootloader 的安全特性。
+**注意** ：所有示例配置都禁用了安全特性。在开发过程中，Silicon Labs 强烈建议启用安全特性以防止未经授权的各方上传不受信任的程序代码。请参见 [9.3 Using Application Image Security Features](#93-using-application-image-security-features) 了解如何配置 Gecko Bootloader 的安全特性。
 
 ### 7.3.1 UART XMODEM Bootloader
 
@@ -964,7 +964,7 @@ Gecko Bootloader 提供的默认存储槽配置 **必须** 配置为匹配特定
 
 ## 7.5 Setting a Version Number
 
-可以设置一个版本号来区分 Gecko Bootloader 的不同版本。要执行 Bootloader 升级，不仅正在运行的 Bootloader 必须通过其完整性检查（参见 [4.1.1 Downloading and Applying a Bootloader GBL Upgrade File]() ），而且 Bootloader 升级映像的版本号也必须高于正在运行的 Bootloader 映像。可以使用 Simplicity Studio 通过配置 **Bootloader Core** 组件的 **Bootloader Version Main Customer** 选项来设置版本号。该宏将由配置文件 **btl_config.h** 选取，其中它与 Silicon Labs 提供的 Gecko Bootloader 文件的版本号结合在一起。
+可以设置一个版本号来区分 Gecko Bootloader 的不同版本。要执行 Bootloader 升级，不仅正在运行的 Bootloader 必须通过其完整性检查（参见 [4.1.1 Downloading and Applying a Bootloader GBL Upgrade File](#411-downloading-and-applying-a-bootloader-gbl-upgrade-file) ），而且 Bootloader 升级映像的版本号也必须高于正在运行的 Bootloader 映像。可以使用 Simplicity Studio 通过配置 **Bootloader Core** 组件的 **Bootloader Version Main Customer** 选项来设置版本号。该宏将由配置文件 **btl_config.h** 选取，其中它与 Silicon Labs 提供的 Gecko Bootloader 文件的版本号结合在一起。
 
 ## 7.6 Placing Bootloader in Main Flash
 
@@ -989,7 +989,7 @@ Gecko Bootloader 使用 Pin Tool 来配置引脚分配和其他硬件相关设�
 
 默认的 Bootloader 代码不考虑其他设置，如 CMU 振荡器配置或 DCDC 配置。如果需要使用这些配置设置，则必须在 `btl_main.c` 中添加所需的代码。
 
-**注意** ：虽然 delay driver 使用 Pin Tool 中的 HFXO frequency setting，但此 HFXO 启用设置不用于在启动时初始化 HFXO。此设置仅在通过应用程序接口（参见 [10 Application Interface]() ）调用 Bootloader 时使用，并且 Application 在调用 Bootloader 的应用程序接口 API 之前已切换到 HFXO。
+**注意** ：虽然 delay driver 使用 Pin Tool 中的 HFXO frequency setting，但此 HFXO 启用设置不用于在启动时初始化 HFXO。此设置仅在通过应用程序接口（参见 [11 Application Interface](#11-application-interface) ）调用 Bootloader 时使用，并且 Application 在调用 Bootloader 的应用程序接口 API 之前已切换到 HFXO。
 
 ## 7.8 Size Requirements for Different Bootloader Configurations for Series 1 Devices
 
@@ -1049,7 +1049,7 @@ Simplicity Commander 在以下小节的示例中使用。有关执行命令以�
 
 要从 Main Bootloader 升级 **mybootloader.s37** 创建未签名的 GBL 文件，请执行 `commander gbl create mybootloader.gbl --bootloader mybootloader.s37` 。该文件可与 Gecko Bootloader 的 Standalone Bootloader 配置一起使用。
 
-要从 Secure Engine 创建未签名的 GBL 文件，请升级 **mySecureElement.seu** ，然后执行 `commander gbl create mySecureElement.gbl --seupgrade mySecureElement.seu` 。Secure Engine 映像 .seu 由 Silicon Labs 提供，可通过 Simplicity Studio 找到。参见 [5 Gecko Bootloader Operation - Secure Engine Upgrade]() 。
+要从 Secure Engine 创建未签名的 GBL 文件，请升级 **mySecureElement.seu** ，然后执行 `commander gbl create mySecureElement.gbl --seupgrade mySecureElement.seu` 。Secure Engine 映像 .seu 由 Silicon Labs 提供，可通过 Simplicity Studio 找到。参见 [5 Gecko Bootloader Operation - Secure Engine Upgrade](#5-gecko-bootloader-operation---secure-engine-upgrade) 。
 
 这些命令也可以组合起来创建单个升级映像，适合与 Gecko Bootloader 的 Application Bootloader 配置一起使用： `commander gbl create myupgrade.gbl --app myapp.s37 --bootloader mybootloader.s37 --seupgrade mySecureElement.seu` 。
 
@@ -1119,7 +1119,7 @@ Application 版本存储在闪存中的 Bootloader 区域。为了正确保护�
 
 证书结构的定义可以在 `api/application_properties.h` 中找到。
 
-要利用基于证书的 Secure Boot，请在 Secure Boot OTP 中配置 certificate-based secure boot 选项以配置 Secure Engine 来验证 Bootloader 映像。在 **Bootloader Core** 组件中通过选中 **Enable certificate support** 选项来配置 Gecko Bootloader 以启用 certificate-based secure boot。Gecko Bootloader 证书必须由存储在 Secure Boot OTP 中的公钥的私钥对签名。有关密钥存储的更多信息，请参见 [9.4.1 Key Storage]() 。
+要利用基于证书的 Secure Boot，请在 Secure Boot OTP 中配置 certificate-based secure boot 选项以配置 Secure Engine 来验证 Bootloader 映像。在 **Bootloader Core** 组件中通过选中 **Enable certificate support** 选项来配置 Gecko Bootloader 以启用 certificate-based secure boot。Gecko Bootloader 证书必须由存储在 Secure Boot OTP 中的公钥的私钥对签名。有关密钥存储的更多信息，请参见 [9.4.1 Key Storage](#941-key-storage) 。
 
 Certificate-based secure boot 过程如下图所示。
 
@@ -1217,7 +1217,7 @@ commander flash --tokengroup znet --tokenfile encryption-key --tokenfile signing
 
 如果 Bootloader 强制执行 Secure Boot，那么需要对 Application 进行签名才能通过验证。每次引导时，都会计算 Application 的 SHA-256 摘要。使用与 GBL 文件签名相同的公钥使用 ECDSA-P256 验证签名。签名验证失败将会阻止 Application 引导。
 
-Application 映像应包含一个 **ApplicationProperties_t** 结构，用于声明 Application 的版本、功能和其他元数据。如果缺少 **ApplicationProperties_t** ，则无法对 Application 映像进行签名。有关添加 **ApplicationProperties_t** 的更多详细信息，请参见 [10.1 Application Properties]() 。
+Application 映像应包含一个 **ApplicationProperties_t** 结构，用于声明 Application 的版本、功能和其他元数据。如果缺少 **ApplicationProperties_t** ，则无法对 Application 映像进行签名。有关添加 **ApplicationProperties_t** 的更多详细信息，请参见 [11.1 Application Properties](#111-application-properties) 。
 
 #### Using Simplicity Commander <!-- omit in toc -->
 
@@ -1247,7 +1247,7 @@ commander convert myapp-for-signing.s37 --secureboot --signature signature.der -
 
 请注意，截至撰写本文时，安全的 Application 映像只能通过 Simplicity Commander 构建，而不能通过 Simplicity Studio 提供的配置选项构建。
 
-Application 映像应包含一个 **ApplicationProperties_t** 结构，用于声明 Application 的版本、功能和其他元数据。如果缺少 **ApplicationProperties_t** ，则无法对 Application 映像进行签名。有关添加 **ApplicationProperties_t** 的更多详细信息，请参见 [10.1 Application Properties]() 。
+Application 映像应包含一个 **ApplicationProperties_t** 结构，用于声明 Application 的版本、功能和其他元数据。如果缺少 **ApplicationProperties_t** ，则无法对 Application 映像进行签名。有关添加 **ApplicationProperties_t** 的更多详细信息，请参见 [11.1 Application Properties](#111-application-properties) 。
 
 #### Using Simplicity Commander to Sign <!-- omit in toc -->
 
