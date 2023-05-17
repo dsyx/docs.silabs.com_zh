@@ -100,7 +100,7 @@ OpenThread 是在 BSD 3-Clause 许可证下发布的。可参阅 LICENSE 文件�
 * [x] [UG103.06: Bootloader Fundamentals](../GeckoBootloader/UG103.6/Bootloader%20Fundamentals.md) —— 介绍了 Silicon Labs 网络设备的引导加载。讨论了 Gecko Bootloader 以及 legacy Ember bootloader 和 legacy Bluetooth bootloader，并介绍了它们所使用的文件格式。
 * [x] [UG489: Silicon Labs Gecko Bootloader User's Guide for GSDK 4.0 and Higher](../GeckoBootloader/UG489/Silicon%20Labs%20Gecko%20Bootloader%20User%E2%80%99s%20Guide%20for%20GSDK%204.0%20and%20Higher.md) —— 描述了针对 EFR32 SoC 和 NCP 的 Silicon Labs Gecko Bootloader 的高级实现，并提供了如何在 GSDK 4.0 及以上版本中开始使用 Gecko Bootloader 与 Silicon Labs 无线协议栈的信息。
 * [ ] [AN1326: Transitioning to the Updated Gecko Bootloader in GSDK 4.0 and Higher]() —— GSDK 4.0 中引入的 Gecko Bootloader v2.x 与 Gecko Bootloader v1.x 相比包含了许多变化。本文档描述了版本之间的差异，包括如何在 Simplicity Studio 5 中配置新的 Gecko Bootloader。
-* [ ] [AN1218: Series 2 Secure Boot with RTSL]() —— 包含了在 Series 2 设备上配置和使用带有硬件信任根和安全加载器的安全启动的详细信息，包括如何供应签名密钥。这是 UG266: Silicon Labs Gecko Bootloader User's Guide 的配套文档。
+* [x] [AN1218: Series 2 Secure Boot with RTSL](../GeckoBootloader/AN1218/Series%202%20Secure%20Boot%20with%20RTSL.md) —— 包含了在 Series 2 设备上配置和使用带有硬件信任根和安全加载器的安全启动的详细信息，包括如何供应签名密钥。这是 UG266: Silicon Labs Gecko Bootloader User's Guide 的配套文档。
 
 
 ### 非易失性数据存储

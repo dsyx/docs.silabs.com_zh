@@ -197,7 +197,7 @@ Demos 和 Examples 位于 Simplicity Studio 启动器视图的 Example Projects 
 * [x] [UG489: Silicon Labs Gecko Bootloader User's Guide for GSDK 4.0 and Higher](../GeckoBootloader/UG489/Silicon%20Labs%20Gecko%20Bootloader%20User%E2%80%99s%20Guide%20for%20GSDK%204.0%20and%20Higher.md) - 描述了用于 EFR32 SoC 和 NCP 的 Silicon Labs Gecko Bootloader 的高级实现，并提供了有关如何开始使用 Gecko Bootloader 和 GSDK 4.0（及更高版本）中的 Silicon Labs 无线协议栈的信息。
 * [ ] [AN1086: Using the Gecko Bootloader with Silicon Labs Bluetooth Applications]() - 包含将 Gecko Bootloader 与 Silicon Labs Bluetooth 应用程序结合使用的相关详细信息。它补充了 [UG489: Silicon Labs Gecko Bootloader User's Guide for GSDK 4.0 and Higher]() 中提供的通用 Gecko Bootloader 实现信息。
 * [ ] [AN1326: Transitioning to the Updated Gecko Bootloader in GSDK 4.0 and Higher]() - GSDK 4.0 中引入的 Gecko Bootloader v2.x 与 Gecko Bootloader v1.x 相比包含了许多更改。此文档描述了版本之间的差异，包括如何在 Simplicity Studio 5 中配置新的 Gecko Bootloader。
-* [ ] [AN1218: Series 2 Secure Boot with RTSL]() - 包含了有关在 Series 2 设备上配置和使用带有硬件信任根和安全加载器的安全启动的详细信息，包括如何配置签署密钥。这是 [UG489: Silicon Labs Gecko Bootloader User's Guide for GSDK 4.0 and Higher]() 的配套文档。
+* [x] [AN1218: Series 2 Secure Boot with RTSL](../GeckoBootloader/AN1218/Series%202%20Secure%20Boot%20with%20RTSL.md) - 包含了有关在 Series 2 设备上配置和使用带有硬件信任根和安全加载器的安全启动的详细信息，包括如何配置签署密钥。这是 [UG489: Silicon Labs Gecko Bootloader User's Guide for GSDK 4.0 and Higher]() 的配套文档。
 
 ### Non-Volatile Data Storage
 
