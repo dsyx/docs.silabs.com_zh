@@ -23,6 +23,6 @@
 
 此外，Silicon Labs 还提供了使用无线方式进行软件和安全更新的方法，有助于降低维护成本并改善最终用户的产品体验！
 
-当您下载好 Simplicity Studio 和 GSDK 后，有关如何使用 OpenThread 示例和配置工具的详细说明可以在 OpenThread SDK Quick-Start Guide (PDF)<sup>\[[en](../Documents/QSG170/qsg170-openthread-sdk-quick-start-guide.pdf) | [zh](../Documents/QSG170/qsg170-openthread-sdk-quick-start-guide_zh.md)\]</sup> 中找到。
+当您下载好 Simplicity Studio 和 GSDK 后，有关如何使用 OpenThread 示例和配置工具的详细说明可以在 [OpenThread SDK Quick-Start Guide (PDF)](../Documents/QSG170/qsg170-openthread-sdk-quick-start-guide.pdf)<sup>[zh](../Documents/QSG170/qsg170-openthread-sdk-quick-start-guide_zh.md)</sup> 中找到。
 
 注意：开始使用 GSDK 的推荐方法是首先安装 Simplicity Studio 5，这将设置您的开发环境并引导您完成 GSDK 的安装。此外，GSDK 和其他所需的工具也可以从 [GitHub GSDK 站点](https://github.com/SiliconLabs/gecko_sdk/#README.MD) 中手动安装。
