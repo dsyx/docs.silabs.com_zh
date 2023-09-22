@@ -16,7 +16,7 @@ Silicon Labs 已经制作了一系列关于为 Silicon Labs OpenThread 开发人
 
 ## Silicon Labs OpenThread Resources <!-- omit from toc -->
 
-- [Thread Fundamentals](../Documents/UG103.11/ug103-11-fundamentals-thread.pdf)：面向刚接触 OpenThread 的人员，包含了 Thread 出现的简要背景、提供技术概述，并描述了在实现 Thread 解决方案时需要考虑的 Thread 的一些关键特性。
+- [Thread Fundamentals](../Documents/UG103.11/ug103-11-fundamentals-thread.pdf)<sup>[zh](../Documents/UG103.11/ug103-11-fundamentals-thread_zh.md)</sup>：面向刚接触 OpenThread 的人员，包含了 Thread 出现的简要背景、提供技术概述，并描述了在实现 Thread 解决方案时需要考虑的 Thread 的一些关键特性。
 - [Wireless Networking Fundamentals](../Documents/UG103.01/ug103-01-fundamentals-wireless-network.pdf)：面向刚接触无线网络的人员，介绍了无线网络的一些基本概念。
 
 ## Additional OpenThread Resources <!-- omit from toc -->
